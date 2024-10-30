@@ -1,0 +1,46 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    font-size: 42px;
+    color: rgba(207, 174, 109);
+    background-color: rgba(0, 0, 0);
+    font-family: monospace;
+}
+
+#bg {
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Extra large screens, big displays */
+
+@media only screen and (max-width: 1800px) {
+
+}
+
+/* Larger screens, TVs, wide screens */
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+/* Medium screens, desktops */
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+/* Small screens, tablets */
+
+@media only screen and (max-width: 768px) {
+
+}
+
+/* Tiny screens, mobile devices, phones */
+
+@media only screen and (max-width: 480px) {
+
+}
