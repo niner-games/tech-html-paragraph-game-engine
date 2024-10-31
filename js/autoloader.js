@@ -11,24 +11,20 @@ let AutoLoader = {
     ],
 
     languages: {
-        'pl': 'polski',
         'en': 'English',
-        'sx': 'ślōnskŏ gŏdka'
+        'pl': 'polski',
+        'sx': 'ślōnski'
     },
 
     themes: {
         'bootstrap-cosmo': 'Cosmo',
-        'bootstrap-darkly': 'Flatly Dark',
-        'bootstrap-flatly': 'Flatly Light',
-        'bootstrap-materia': 'Materia',
+        'bootstrap-darkly': 'Darkly',
+        'bootstrap-flatly': 'Flatly',
         'bootstrap-minty': 'Minty',
         'bootstrap-morph': 'Morph',
-        'bootstrap-simplex': 'Simplex',
         'bootstrap-sketchy': 'Sketchy',
-        'bootstrap-slate': 'Slate',
         'bootstrap-solar': 'Solar',
-        'bootstrap-united': 'United',
-        'bootstrap-vapor': 'Vapor',
+        'bootstrap-vibes': 'Vibes',
         'bootstrap-yeti': 'Yeti'
     },
 

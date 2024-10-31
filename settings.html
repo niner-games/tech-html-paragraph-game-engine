@@ -22,8 +22,11 @@
 
     <script>
         window.addEventListener("load", function() {
+            let i = 0;
             let style = "ltr";
+            let styleOverlay = document.getElementById('theme-overlay');
             let languageOverlay = document.getElementById('language-overlay');
+            let colors = ['btn-primary', 'btn-secondary', 'btn-success', 'btn-danger', 'btn-warning', 'btn-info', 'btn-light', 'btn-dark'];
 
             for (let key in AutoLoader.languages) {
                 if (AutoLoader.languages.hasOwnProperty(key)) {
@@ -35,13 +38,18 @@
                     button.style.direction = style;
                     button.textContent = AutoLoader.languages[key];
 
+                    button.classList.add('btn');
+                    button.classList.add(colors[i % colors.length]);
+
                     button.addEventListener('click', () => {TranslationEngine.setLanguage(key)});
 
                     languageOverlay.appendChild(button);
+
+                    i++;
                 }
             }
 
-            let styleOverlay = document.getElementById('theme-overlay');
+            i = 0;
 
             for (let key in AutoLoader.themes) {
                 if (AutoLoader.themes.hasOwnProperty(key)) {
@@ -50,9 +58,14 @@
                     button.value = key;
                     button.textContent = AutoLoader.themes[key];
 
+                    button.classList.add('btn');
+                    button.classList.add(colors[i % colors.length]);
+
                     button.addEventListener('click', () => {ThemeEngine.setTheme(key)});
 
                     styleOverlay.appendChild(button);
+
+                    i++;
                 }
             }
         });
