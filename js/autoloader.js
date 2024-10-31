@@ -1,11 +1,3 @@
-window.addEventListener("load", function() {
-    AutoLoader.loadResources().then(() => {
-        // TranslationEngine.translateDocument(TranslationEngine.getLanguage());
-    });
-});
-
-const defaultLanguageCode = 'en';
-
 const AutoLoader = {
     stylesheets: [
         'css/style.css'
@@ -13,12 +5,12 @@ const AutoLoader = {
 
     scripts: [
         'data/translations.js',
-        'js/translation-engine.js',
-        // 'https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js',
+        'js/translation-engine.js'
     ],
 
     promises: [],
-    callbacks: [],
+
+    defaultLanguage: 'en',
 
     loadResources() {
         this.stylesheets.forEach(function (stylesheet) {
@@ -46,16 +38,12 @@ const AutoLoader = {
             }));
         });
 
-        // return Promise.all(this.promises);
-
-        return Promise.all(this.promises).then(() => {
-            this.callbacks.push(TranslationEngine.translateDocument(TranslationEngine.getLanguage()));
-
-            this.callbacks.forEach(callback => {
-                if (callback && typeof callback === 'function') {
-                    callback();
-                }
-            });
-        });
+        return Promise.all(this.promises);
     }
 };
+
+window.addEventListener("load", function() {
+    AutoLoader.loadResources().then(() => {
+        TranslationEngine.translateDocument(TranslationEngine.getLanguage())
+    });
+});

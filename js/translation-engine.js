@@ -1,6 +1,6 @@
 const TranslationEngine = {
     getLanguage() {
-        return window.localStorage.getItem("language") || defaultLanguageCode;
+        return window.localStorage.getItem("language") || AutoLoader.defaultLanguage;
     },
 
     translateDocument: function(language) {

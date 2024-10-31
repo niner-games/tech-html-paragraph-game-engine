@@ -1,10 +1,6 @@
 const defaultLanguageOverlayFontSize = '14px';
 const defaultLanguageOverlayElementId = 'language-overlay';
 
-window.addEventListener("load", function() {
-    LanguageBox.createOverlay();
-});
-
 const LanguageBox = {
     id: defaultLanguageOverlayElementId,
     languages: {
@@ -28,7 +24,7 @@ const LanguageBox = {
     },
 
     getLanguage() {
-        return window.localStorage.getItem("language") || defaultLanguageCode;
+        return window.localStorage.getItem("language") || AutoLoader.defaultLanguage;
     },
 
     createOverlay: function() {
