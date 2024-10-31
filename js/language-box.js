@@ -8,9 +8,9 @@ window.addEventListener("load", function() {
 const LanguageBox = {
     id: defaultLanguageOverlayElementId,
     languages: {
-        "en": "English",
-        "pl": "polski",
-        "sx": "ślōnskŏ gŏdka"
+        'pl': 'polski',
+        'en': 'English',
+        'sx': 'ślōnskŏ gŏdka'
     },
     
     isSet: function (variable, def) {
@@ -27,8 +27,12 @@ const LanguageBox = {
         return this.isSet(this.id, defaultLanguageOverlayElementId);
     },
 
+    getLanguage() {
+        return window.localStorage.getItem("language") || defaultLanguageCode;
+    },
+
     createOverlay: function() {
-        let style = "direction: ltr;";
+        let style = "ltr";
         let overlay = document.createElement("div");
         let select = document.createElement("select");
         
@@ -47,10 +51,10 @@ const LanguageBox = {
             if (this.languages.hasOwnProperty(key)) {
                 let option = document.createElement("option");
                 
-                style = (key === "iw") ? "direction: rtl;" : style;
+                style = (key === "iw") ? "rtl" : style;
                 
                 option.value = key;
-                option.style = style;
+                option.style.direction = style;
                 option.text = this.languages[key];
                 
                 select.appendChild(option);
@@ -58,14 +62,16 @@ const LanguageBox = {
         }
         
         select.id = "the-select";
-        select.value = TranslationEngine.getLanguage();
+        select.value = this.getLanguage();
         
         select.style.fontSize = defaultLanguageOverlayFontSize;
         
         select.addEventListener("change", this.handleChange);
-        
+
         overlay.appendChild(select);
         document.body.appendChild(overlay);
+
+        return false;
     },
     
     handleChange: function() {
