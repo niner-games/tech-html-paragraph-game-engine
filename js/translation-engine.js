@@ -3,13 +3,19 @@ const TranslationEngine = {
         return window.localStorage.getItem("language") || AutoLoader.defaultLanguage;
     },
 
+    setLanguage: function(selected = AutoLoader.defaultLanguage) {
+        this.translateDocument(selected);
+
+        window.localStorage.setItem("language", selected);
+    },
+
     translateDocument: function(language) {
         let matchingNodes = document.querySelectorAll('[text]');
 
         if (matchingNodes.length === 0) return null;
         if (typeof language === 'undefined') return null;
         if (typeof translationsTable === 'undefined') return null;
-        
+
         matchingNodes.forEach(matchingElement => {
             let translatedText;
             let sourceText = matchingElement.getAttribute("text");

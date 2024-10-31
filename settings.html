@@ -6,20 +6,57 @@
 
     <title>Settings</title>
 
-    <script src="js/language-box.js"></script>
     <script src="js/autoloader.js"></script>
 </head>
 <body>
 
     <div id="background">
 
-        <div text="For details see translation.js file..."></div>
+        <div text="a, b, c, d, e, f, g, h, i, j, k, l, m, N, O, P, Q, R, S, T, U, W, V, X, Y, Z"></div>
 
         <div id="language-overlay"></div>
 
+        <div id="theme-overlay"></div>
+
     </div>
 
-    <script>window.addEventListener("load", function() {LanguageBox.createOverlay();});</script>
+    <script>
+        window.addEventListener("load", function() {
+            let style = "ltr";
+            let languageOverlay = document.getElementById('language-overlay');
+
+            for (let key in AutoLoader.languages) {
+                if (AutoLoader.languages.hasOwnProperty(key)) {
+                    let button = document.createElement("button");
+
+                    style = (key === "iw") ? "rtl" : style;
+
+                    button.value = key;
+                    button.style.direction = style;
+                    button.textContent = AutoLoader.languages[key];
+
+                    button.addEventListener('click', () => {TranslationEngine.setLanguage(key)});
+
+                    languageOverlay.appendChild(button);
+                }
+            }
+
+            let styleOverlay = document.getElementById('theme-overlay');
+
+            for (let key in AutoLoader.themes) {
+                if (AutoLoader.themes.hasOwnProperty(key)) {
+                    let button = document.createElement("button");
+
+                    button.value = key;
+                    button.textContent = AutoLoader.themes[key];
+
+                    button.addEventListener('click', () => {ThemeEngine.setTheme(key)});
+
+                    styleOverlay.appendChild(button);
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
