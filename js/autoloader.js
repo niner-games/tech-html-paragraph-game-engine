@@ -18,8 +18,18 @@ let AutoLoader = {
 
     themes: {
         'bootstrap-cosmo': 'Cosmo',
-        'bootstrap-darkly': 'Darkly',
-        'bootstrap-cerulean': 'Cerulean'
+        'bootstrap-darkly': 'Flatly Dark',
+        'bootstrap-flatly': 'Flatly Light',
+        'bootstrap-materia': 'Materia',
+        'bootstrap-minty': 'Minty',
+        'bootstrap-morph': 'Morph',
+        'bootstrap-simplex': 'Simplex',
+        'bootstrap-sketchy': 'Sketchy',
+        'bootstrap-slate': 'Slate',
+        'bootstrap-solar': 'Solar',
+        'bootstrap-united': 'United',
+        'bootstrap-vapor': 'Vapor',
+        'bootstrap-yeti': 'Yeti'
     },
 
     defaultLanguage: 'en',
