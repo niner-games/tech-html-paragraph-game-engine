@@ -1,7 +1,7 @@
 let AutoLoader = {
     stylesheets: {
         'main': 'css/style.css',
-        'theme': 'css/bootstrap-darkly.css',
+        'theme': 'css/bootstrap-vibes.css',
     },
 
     scripts: [
@@ -17,7 +17,6 @@ let AutoLoader = {
     },
 
     themes: {
-        'bootstrap-cosmo': 'Cosmo',
         'bootstrap-darkly': 'Darkly',
         'bootstrap-flatly': 'Flatly',
         'bootstrap-minty': 'Minty',
