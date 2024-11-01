@@ -22,70 +22,54 @@
 
     <script>
         window.addEventListener("load", function() {
-            let i = 2;
-            let style = "ltr";
-            let styleOverlay = document.getElementById('theme-overlay');
-            let languageOverlay = document.getElementById('language-overlay');
-            let transformationOverlay = document.getElementById('transformation-overlay');
-            let colors = ['btn-primary', 'btn-secondary', 'btn-success', 'btn-danger', 'btn-warning', 'btn-info', 'btn-light', 'btn-dark'];
+            generateButtons(
+                AutoLoader.languages,
+                ['btn-success'],
+                (event, key) => TranslationEngine.setLanguage(key),
+                document.getElementById('language-overlay')
+            );
 
-            for (let key in AutoLoader.languages) {
-                if (AutoLoader.languages.hasOwnProperty(key)) {
+            generateButtons(
+                AutoLoader.themes,
+                ['btn-warning'],
+                (event, key) => ThemeEngine.setTheme(key),
+                document.getElementById('theme-overlay')
+            );
+
+            generateButtons(
+                AutoLoader.transformations,
+                ['btn-info'],
+                (event, key) => ThemeEngine.setTransformation(key),
+                document.getElementById('transformation-overlay')
+            );
+        });
+
+        function generateButtons(sourceArray, colorsArray, eventListener, parentElement) {
+            let i = 0;
+            let style = "ltr";
+
+            for (let key in sourceArray) {
+                if (sourceArray.hasOwnProperty(key)) {
                     let button = document.createElement("button");
 
                     style = (key === "iw") ? "rtl" : style;
 
                     button.value = key;
                     button.style.direction = style;
-                    button.textContent = AutoLoader.languages[key];
+                    button.textContent = sourceArray[key];
 
                     button.classList.add('btn');
-                    button.classList.add(colors[i % colors.length]);
+                    button.classList.add(colorsArray[i % colorsArray.length]);
 
-                    button.addEventListener('click', () => {TranslationEngine.setLanguage(key)});
+                    // button.addEventListener('click', () => eventListener);
+                    button.addEventListener('click', (event) => eventListener(event, key));
 
-                    languageOverlay.appendChild(button);
+                    parentElement.appendChild(button);
 
                     i++;
                 }
             }
-
-            i = 0;
-
-            for (let key in AutoLoader.themes) {
-                if (AutoLoader.themes.hasOwnProperty(key)) {
-                    let button = document.createElement("button");
-
-                    button.value = key;
-                    button.textContent = AutoLoader.themes[key];
-
-                    button.classList.add('btn');
-                    button.classList.add(colors[i % colors.length]);
-
-                    button.addEventListener('click', () => {ThemeEngine.setTheme(key)});
-
-                    styleOverlay.appendChild(button);
-
-                    i++;
-                }
-            }
-
-            for (let key in AutoLoader.transformations) {
-                if (AutoLoader.transformations.hasOwnProperty(key)) {
-                    let button = document.createElement("button");
-
-                    button.value = key;
-                    button.textContent = AutoLoader.transformations[key];
-
-                    button.classList.add('btn');
-                    button.classList.add(key);
-
-                    button.addEventListener('click', () => {ThemeEngine.setTransformation(key)});
-
-                    transformationOverlay.appendChild(button);
-                }
-            }
-        });
+        }
     </script>
 
 </body>
