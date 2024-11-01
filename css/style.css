@@ -12,11 +12,12 @@ body, html {
     flex-direction: column;
 }
 
-#language-overlay, #theme-overlay {
+.overlay {
     margin-top: 42px;
+    text-align: left;
 }
 
-#language-overlay button, #theme-overlay button {
+.overlay button {
     margin-top: 42px;
     margin-left: 14px;
 }

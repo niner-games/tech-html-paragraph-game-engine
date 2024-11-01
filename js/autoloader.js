@@ -17,9 +17,7 @@ let AutoLoader = {
     },
 
     themes: {
-        'bootstrap-darkly': 'Darkly',
         'bootstrap-flatly': 'Flatly',
-        'bootstrap-minty': 'Minty',
         'bootstrap-morph': 'Morph',
         'bootstrap-sketchy': 'Sketchy',
         'bootstrap-solar': 'Solar',
@@ -27,8 +25,14 @@ let AutoLoader = {
         'bootstrap-yeti': 'Yeti'
     },
 
+    transformations: {
+        'btn-light': 'Base',
+        'btn-dark': 'Negative'
+    },
+
     defaultLanguage: 'en',
-    defaultTheme: 'bootstrap-darkly',
+    defaultTheme: 'bootstrap-vibes',
+    defaultTransformation: 'btn-dark',
 
     promises: [],
 
@@ -66,7 +70,9 @@ let AutoLoader = {
 
 window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
+        ThemeEngine.generateColorTables();
         ThemeEngine.switchTheme(ThemeEngine.getTheme());
+
         TranslationEngine.translateDocument(TranslationEngine.getLanguage());
     });
 });

@@ -4,9 +4,9 @@ const TranslationEngine = {
     },
 
     setLanguage: function(selected = AutoLoader.defaultLanguage) {
-        this.translateDocument(selected);
-
         window.localStorage.setItem("language", selected);
+
+        this.translateDocument(selected);
     },
 
     translateDocument: function(language) {

@@ -12,20 +12,21 @@
 
     <div id="background">
 
-        <div text="a, b, c, d, e, f, g, h, i, j, k, l, m, N, O, P, Q, R, S, T, U, W, V, X, Y, Z"></div>
+        <div text="Customize the game to your needs."></div>
 
-        <div id="language-overlay"></div>
-
-        <div id="theme-overlay"></div>
+        <div id="language-overlay" class="overlay"></div>
+        <div id="theme-overlay" class="overlay"></div>
+        <div id="transformation-overlay" class="overlay"></div>
 
     </div>
 
     <script>
         window.addEventListener("load", function() {
-            let i = 0;
+            let i = 2;
             let style = "ltr";
             let styleOverlay = document.getElementById('theme-overlay');
             let languageOverlay = document.getElementById('language-overlay');
+            let transformationOverlay = document.getElementById('transformation-overlay');
             let colors = ['btn-primary', 'btn-secondary', 'btn-success', 'btn-danger', 'btn-warning', 'btn-info', 'btn-light', 'btn-dark'];
 
             for (let key in AutoLoader.languages) {
@@ -66,6 +67,22 @@
                     styleOverlay.appendChild(button);
 
                     i++;
+                }
+            }
+
+            for (let key in AutoLoader.transformations) {
+                if (AutoLoader.transformations.hasOwnProperty(key)) {
+                    let button = document.createElement("button");
+
+                    button.value = key;
+                    button.textContent = AutoLoader.transformations[key];
+
+                    button.classList.add('btn');
+                    button.classList.add(key);
+
+                    button.addEventListener('click', () => {ThemeEngine.setTransformation(key)});
+
+                    transformationOverlay.appendChild(button);
                 }
             }
         });
