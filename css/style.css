@@ -13,6 +13,10 @@ body, html {
     margin: auto;
 }
 
+ .doubled-size-title {
+     font-size: 210%;
+ }
+
 /* Extra large screens, big displays */
 
 @media only screen and (max-width: 1800px) {

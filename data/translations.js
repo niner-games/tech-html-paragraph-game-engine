@@ -2,7 +2,7 @@ let Translations = {
     pl:
     {
         "Customize the game to your needs.": "Dostosuj grę do swoich potrzeb.",
-        "Welcome to our game!": "Witaj w naszej grze!",
+        "proudly presents...": "z dumą przedstawia...",
         "Made with": "Stworzone z",
         "in Upper Silesia!": "na Górnym Sląsku!",
         "Base": "Podstawowy",
@@ -16,7 +16,7 @@ let Translations = {
     sx:
     {
         "Customize the game to your needs.": "Przipasuj szpil do swojich potrzeb.",
-        "Welcome to our game!": "Witej w naszym szpilu!",
+        "proudly presents...": "z hyrōm przedstawiŏ...",
         "Made with": "Stworzōne z",
         "in Upper Silesia!": "na Gōrnym Ślōnsku!",
         "Base": "Bazowy",
