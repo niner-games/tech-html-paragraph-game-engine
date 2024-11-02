@@ -14,18 +14,23 @@ const TranslationEngine = {
         let matchingNodes = document.querySelectorAll('[text]');
 
         if (matchingNodes.length === 0) return null;
-        if (typeof language === 'undefined') return null;
-        if (typeof translationsTable === 'undefined') return null;
 
         matchingNodes.forEach(matchingElement => {
-            let translatedText;
             let sourceText = matchingElement.getAttribute("text");
 
-            translatedText = (typeof translationsTable[language] === "undefined") ? sourceText : translationsTable[language][sourceText];
-            translatedText = (typeof translatedText === "undefined" || translatedText === "") ? sourceText : translatedText;
-
-            matchingElement.textContent = translatedText;
+            matchingElement.textContent = this.translateText(sourceText, language);
             matchingElement.style.direction = (language === "iw") ? "rtl" : "ltr";
         });
+    },
+
+    translateText: function(sourceText, language) {
+        let translatedText;
+
+        if (typeof language === 'undefined') return null;
+        if (typeof Translations === 'undefined') return null;
+
+        translatedText = (typeof Translations[language] === "undefined") ? sourceText : Translations[language][sourceText];
+
+        return (typeof translatedText === "undefined" || translatedText === "") ? sourceText : translatedText;
     }
 };

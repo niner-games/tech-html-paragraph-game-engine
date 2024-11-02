@@ -1,4 +1,4 @@
-let translationsTable = {
+let Translations = {
     pl:
     {
         "Customize the game to your needs.": "Dostosuj grę do swoich potrzeb.",
