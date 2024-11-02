@@ -6,10 +6,24 @@ body, html {
 
 #background {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     overflow-y: auto;
+    padding: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-height: 800px) {
+    #background {
+        justify-content: flex-start;
+    }
 }
 
 /* Extra large screens, big displays */
