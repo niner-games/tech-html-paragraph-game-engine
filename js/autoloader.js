@@ -5,7 +5,7 @@ let AutoLoader = {
     },
 
     scripts: [
-        'data/translations.json',
+        'data/translations.js',
 
         'js/theme-engine.js',
         'js/translation-engine.js',
