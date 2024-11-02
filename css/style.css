@@ -1,35 +1,22 @@
 body, html {
     margin: 0;
     height: 100%;
-    font-size: 42px;
+    font-size: 2vw;
 }
 
 #background {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow-y: auto;
     padding: 15px;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-@media (max-height: 800px) {
-    #background {
-        justify-content: flex-start;
-    }
+    max-width: 1200px; /* Matches Bootstrap's container max-width */
+    margin: auto;
 }
 
 /* Extra large screens, big displays */
 
 @media only screen and (max-width: 1800px) {
-
+    font-size: 1.5vw;
 }
 
 /* Larger screens, TVs, wide screens */
@@ -47,11 +34,11 @@ body, html {
 /* Small screens, tablets */
 
 @media only screen and (max-width: 768px) {
-
+    font-size: 4vw;
 }
 
 /* Tiny screens, mobile devices, phones */
 
 @media only screen and (max-width: 480px) {
-
+    font-size: 4vw;
 }
