@@ -66,13 +66,28 @@ let AutoLoader = {
 
         return Promise.all(this.promises);
     },
+
+    setActiveButton(buttonValue) {
+        let allButtons = document.querySelectorAll('.btn-group button');
+        let targetButton = Array.from(allButtons).find(button => button.value === buttonValue);
+
+        if (targetButton) {
+            let groupButtons = targetButton.parentElement.querySelectorAll('button');
+
+            groupButtons.forEach(button => button.classList.remove('active'));
+
+            targetButton.classList.add('active');
+            targetButton.blur();
+        }
+    }
 };
 
 window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
         ThemeEngine.generateColorTables();
-        ThemeEngine.switchTheme(ThemeEngine.getTheme());
 
-        TranslationEngine.translateDocument(TranslationEngine.getLanguage());
+        if (!ThemeEngine.getTransformation()) {ThemeEngine.setTransformation()}
+        if (!ThemeEngine.getTheme()) {ThemeEngine.setTheme()} else {ThemeEngine.switchTheme(ThemeEngine.getTheme())}
+        if (!TranslationEngine.getLanguage()) {TranslationEngine.setLanguage()} else {TranslationEngine.translateDocument(TranslationEngine.getLanguage())}
     });
 });

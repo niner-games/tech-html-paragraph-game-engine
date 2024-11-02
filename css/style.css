@@ -14,12 +14,6 @@ body, html {
 
 .overlay {
     margin-top: 42px;
-    text-align: left;
-}
-
-.overlay button {
-    margin-top: 42px;
-    margin-left: 14px;
 }
 
 /* Extra large screens, big displays */

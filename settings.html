@@ -14,9 +14,11 @@
 
         <div text="Customize the game to your needs."></div>
 
-        <div id="language-overlay" class="overlay"></div>
-        <div id="theme-overlay" class="overlay"></div>
-        <div id="transformation-overlay" class="overlay"></div>
+        <div id="language-overlay" class="overlay btn-group" role="group" aria-label="Language"></div>
+
+        <div id="theme-overlay" class="overlay btn-group" role="group" aria-label="Template"></div>
+
+        <div id="transformation-overlay" class="overlay btn-group" role="group" aria-label="Style"></div>
 
     </div>
 
@@ -26,25 +28,28 @@
                 AutoLoader.languages,
                 ['btn-success'],
                 (event, key) => TranslationEngine.setLanguage(key),
-                document.getElementById('language-overlay')
+                document.getElementById('language-overlay'),
+                'language'
             );
 
             generateButtons(
                 AutoLoader.themes,
                 ['btn-warning'],
                 (event, key) => ThemeEngine.setTheme(key),
-                document.getElementById('theme-overlay')
+                document.getElementById('theme-overlay'),
+                'theme'
             );
 
             generateButtons(
                 AutoLoader.transformations,
                 ['btn-info'],
                 (event, key) => ThemeEngine.setTransformation(key),
-                document.getElementById('transformation-overlay')
+                document.getElementById('transformation-overlay'),
+                'transformation'
             );
         });
 
-        function generateButtons(sourceArray, colorsArray, eventListener, parentElement) {
+        function generateButtons(sourceArray, colorsArray, eventListener, parentElement, storageKey) {
             let i = 0;
             let style = "ltr";
 
@@ -55,13 +60,17 @@
                     style = (key === "iw") ? "rtl" : style;
 
                     button.value = key;
+                    button.type = 'button';
                     button.style.direction = style;
                     button.textContent = sourceArray[key];
 
                     button.classList.add('btn');
                     button.classList.add(colorsArray[i % colorsArray.length]);
 
-                    // button.addEventListener('click', () => eventListener);
+                    if (window.localStorage.getItem(storageKey) === key) {
+                        button.classList.add('active');
+                    }
+
                     button.addEventListener('click', (event) => eventListener(event, key));
 
                     parentElement.appendChild(button);

@@ -1,12 +1,13 @@
 const TranslationEngine = {
     getLanguage() {
-        return window.localStorage.getItem("language") || AutoLoader.defaultLanguage;
+        return window.localStorage.getItem('language');
     },
 
-    setLanguage: function(selected = AutoLoader.defaultLanguage) {
-        window.localStorage.setItem("language", selected);
+    setLanguage: function(language = AutoLoader.defaultLanguage) {
+        window.localStorage.setItem('language', language);
 
-        this.translateDocument(selected);
+        AutoLoader.setActiveButton(language);
+        this.translateDocument(language);
     },
 
     translateDocument: function(language) {

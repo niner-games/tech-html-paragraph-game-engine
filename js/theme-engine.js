@@ -3,12 +3,13 @@ const ThemeEngine = {
     invertedColors: {},
 
     getTheme() {
-        return window.localStorage.getItem("theme") || AutoLoader.defaultTheme;
+        return window.localStorage.getItem('theme');
     },
 
     setTheme: function(theme = AutoLoader.defaultTheme) {
-        window.localStorage.setItem("theme", theme);
+        window.localStorage.setItem('theme', theme);
 
+        AutoLoader.setActiveButton(theme);
         this.switchTheme(theme);
     },
 
@@ -28,17 +29,20 @@ const ThemeEngine = {
     },
 
     getTransformation() {
-        return window.localStorage.getItem("transformation") || AutoLoader.defaultTransformation;
+        return window.localStorage.getItem('transformation');
     },
 
     setTransformation: function(transformation = AutoLoader.defaultTransformation) {
-        window.localStorage.setItem("transformation", transformation);
+        window.localStorage.setItem('transformation', transformation);
 
+        console.log(transformation);
+
+        AutoLoader.setActiveButton(transformation);
         this.switchTheme();
     },
     
     invertColors() {
-        let colorTable = (this.getTransformation() === 'btn-dark') ? this.invertedColors : this.elementColors;
+        let colorTable = (this.getTransformation() !== 'btn-dark') ? this.invertedColors : this.elementColors;
 
         Object.keys(colorTable).forEach(id => {
             let element = document.getElementById(id);
