@@ -10,6 +10,7 @@ let AutoLoader = {
         'data/translations.js',
 
         'js/theme-engine.js',
+        'js/chapter-engine.js',
         'js/settings-engine.js',
         'js/translation-engine.js',
     ],

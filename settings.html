@@ -7,6 +7,7 @@
     <title data-text="Settings"></title>
 
     <script src="js/autoloader.js"></script>
+    <script src="js/settings-engine.js"></script>
 </head>
 <body>
 
@@ -33,7 +34,7 @@
 
                 <div class="col-12">
                     <div class="mb-2 mt-3 text-center">
-                        <button data-text="Back" type="button" class="btn btn-primary" onclick="window.history.back();"></button>
+                        <button data-text="Back" type="button" class="btn btn-primary" onclick="SettingsEngine.returnFromSettingsPage()"></button>
                     </div>
                 </div>
             </div>
@@ -42,7 +43,7 @@
 
     <script>
         window.addEventListener("load", function() {
-            generateButtons(
+            SettingsEngine.generateButtons(
                 AutoLoader.languages,
                 ['btn-success'],
                 (event, key) => TranslationEngine.setLanguage(key),
@@ -50,7 +51,7 @@
                 'language'
             );
 
-            generateButtons(
+            SettingsEngine.generateButtons(
                 AutoLoader.themes,
                 ['btn-warning'],
                 (event, key) => ThemeEngine.setTheme(key),
@@ -58,7 +59,7 @@
                 'theme'
             );
 
-            generateButtons(
+            SettingsEngine.generateButtons(
                 AutoLoader.transformations,
                 ['btn-info'],
                 (event, key) => ThemeEngine.setTransformation(key),
@@ -66,37 +67,6 @@
                 'transformation'
             );
         });
-
-        function generateButtons(sourceArray, colorsArray, eventListener, parentElement, storageKey) {
-            let i = 0;
-            let style = "ltr";
-
-            for (let key in sourceArray) {
-                if (sourceArray.hasOwnProperty(key)) {
-                    let button = document.createElement("button");
-
-                    style = (key === "iw") ? "rtl" : style;
-
-                    button.value = key;
-                    button.type = 'button';
-                    button.style.direction = style;
-                    button.setAttribute('data-text', sourceArray[key]);
-
-                    button.classList.add('btn');
-                    button.classList.add(colorsArray[i % colorsArray.length]);
-
-                    if (window.localStorage.getItem(storageKey) === key) {
-                        button.classList.add('active');
-                    }
-
-                    button.addEventListener('click', (event) => eventListener(event, key));
-
-                    parentElement.appendChild(button);
-
-                    i++;
-                }
-            }
-        }
     </script>
 
 </body>
