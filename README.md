@@ -44,7 +44,7 @@ We aim for a maximum simplicity:
 
 1. Edit [_js/autoloader.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/js/autoloader.js) file and:
 
-   - Change `languages` and corresponding entries in [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) file to modify number of supported languages
+   - Change `languages` group and entries in [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) file to modify list of supported languages
    - Change `themes` and corresponding files in [_css_](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/css) folder to modify number of supported Bootstrap themes
 
 2. Modify entries in [_data/chapters.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/chapters.js) and [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) files to provide whole new story.
