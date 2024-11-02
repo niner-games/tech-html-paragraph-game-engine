@@ -4,17 +4,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Overview</title>
+    <title text="Main Menu"></title>
 
     <script src="js/autoloader.js"></script>
+
+    <style>
+        #background {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body>
-
     <div id="background">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="mb-2 mt-2 text-center">
+                        <p text="What now?"></p>
+                    </div>
+                </div>
 
-        <span text="What now?"></span>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="btn-group-vertical w-100">
+                            <button id="continue" type="button" text="Continue" class="btn btn-info" disabled></button>
+                            <button type="button" text="New Game" class="btn btn-primary" disabled></button>
+                            <button type="button" text="Settings" class="btn btn-primary" onclick="window.location.href='settings.html'"></button>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-12">
+                    <div class="mb-2 mt-3 text-center">
+                        <p text="Made with ♥ in Upper Silesia!"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </body>
 </html>
