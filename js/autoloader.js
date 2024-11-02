@@ -68,8 +68,11 @@ let AutoLoader = {
     },
 
     setActiveButton(buttonValue) {
-        let allButtons = document.querySelectorAll('.btn-group button');
+        let allButtons = document.querySelectorAll('.btn-group-vertical button');
         let targetButton = Array.from(allButtons).find(button => button.value === buttonValue);
+
+        console.log(buttonValue);
+        console.log(targetButton);
 
         if (targetButton) {
             let groupButtons = targetButton.parentElement.querySelectorAll('button');

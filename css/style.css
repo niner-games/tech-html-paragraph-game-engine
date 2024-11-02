@@ -10,7 +10,6 @@ body, html {
     justify-content: center;
     height: 100vh;
     overflow-y: auto;
-    /*flex-direction: column;*/
 }
 
 /* Extra large screens, big displays */
