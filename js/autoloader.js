@@ -1,7 +1,7 @@
 let AutoLoader = {
     stylesheets: {
         'main': 'css/style.css',
-        'theme': 'css/bootstrap-vibes.css',
+        'theme': 'css/bootstrap-yeti.css',
     },
 
     scripts: [
@@ -32,7 +32,7 @@ let AutoLoader = {
     },
 
     defaultLanguage: 'en',
-    defaultTheme: 'bootstrap-vibes',
+    defaultTheme: 'bootstrap-yeti',
     defaultTransformation: 'theme-dark',
 
     promises: [],
