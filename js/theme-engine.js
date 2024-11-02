@@ -41,6 +41,7 @@ const ThemeEngine = {
     
     invertColors() {
         let colorTable = (this.getTransformation() === 'theme-dark') ? this.invertedColors : this.elementColors;
+        let imgStyleFilter = (this.getTransformation() === 'theme-dark') ? 'invert(1)' : '';
 
         Object.keys(colorTable).forEach(id => {
             let element = document.getElementById(id);
@@ -52,6 +53,10 @@ const ThemeEngine = {
                     element.style.color = colorTable[id];
                 }
             }
+        });
+
+        document.querySelectorAll('img').forEach(img => {
+            img.style.filter = imgStyleFilter;
         });
     },
     
