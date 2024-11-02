@@ -1,6 +1,7 @@
 let AutoLoader = {
     stylesheets: {
         'main': 'css/style.css',
+        'images': 'css/fontawesome.css',
         'theme': 'css/bootstrap-yeti.css',
     },
 
