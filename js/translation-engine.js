@@ -11,12 +11,12 @@ const TranslationEngine = {
     },
 
     translateDocument: function(language) {
-        let matchingNodes = document.querySelectorAll('[text]');
+        let matchingNodes = document.querySelectorAll('[data-text]');
 
         if (matchingNodes.length === 0) return null;
 
         matchingNodes.forEach(matchingElement => {
-            let sourceText = matchingElement.getAttribute("text");
+            let sourceText = matchingElement.getAttribute("data-text");
 
             matchingElement.textContent = this.translateText(sourceText, language);
             matchingElement.style.direction = (language === "iw") ? "rtl" : "ltr";
@@ -26,8 +26,8 @@ const TranslationEngine = {
     translateText: function(sourceText, language) {
         let translatedText;
 
-        if (typeof language === 'undefined') return null;
         if (typeof Translations === 'undefined') return null;
+        if (typeof language === 'undefined' || language === "") return null;
 
         translatedText = (typeof Translations[language] === "undefined") ? sourceText : Translations[language][sourceText];
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title text="Settings"></title>
+    <title data-text="Settings"></title>
 
     <script src="js/autoloader.js"></script>
 </head>
@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="mb-4 mt-2 text-center">
-                        <div text="Customize the game to your needs."></div>
+                        <div data-text="Customize the game to your needs."></div>
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
 
                 <div class="col-12">
                     <div class="mb-2 mt-3 text-center">
-                        <button text="Back" type="button" class="btn btn-primary" onclick="window.history.back();"></button>
+                        <button data-text="Back" type="button" class="btn btn-primary" onclick="window.history.back();"></button>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                     button.value = key;
                     button.type = 'button';
                     button.style.direction = style;
-                    button.setAttribute('text', sourceArray[key]);
+                    button.setAttribute('data-text', sourceArray[key]);
 
                     button.classList.add('btn');
                     button.classList.add(colorsArray[i % colorsArray.length]);
