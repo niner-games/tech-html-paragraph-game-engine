@@ -35,14 +35,12 @@ const ThemeEngine = {
     setTransformation: function(transformation = AutoLoader.defaultTransformation) {
         window.localStorage.setItem('transformation', transformation);
 
-        console.log(transformation);
-
         AutoLoader.setActiveButton(transformation);
         this.switchTheme();
     },
     
     invertColors() {
-        let colorTable = (this.getTransformation() !== 'btn-dark') ? this.invertedColors : this.elementColors;
+        let colorTable = (this.getTransformation() === 'theme-light') ? this.invertedColors : this.elementColors;
 
         Object.keys(colorTable).forEach(id => {
             let element = document.getElementById(id);

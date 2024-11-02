@@ -5,15 +5,12 @@ body, html {
 }
 
 #background {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-}
-
-.overlay {
-    margin-top: 42px;
+    height: 100vh;
+    overflow-y: auto;
+    /*flex-direction: column;*/
 }
 
 /* Extra large screens, big displays */

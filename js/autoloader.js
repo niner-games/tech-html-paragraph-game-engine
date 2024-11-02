@@ -26,13 +26,13 @@ let AutoLoader = {
     },
 
     transformations: {
-        'btn-light': 'Base',
-        'btn-dark': 'Negative'
+        'theme-light': 'Base',
+        'theme-dark': 'Negative'
     },
 
     defaultLanguage: 'en',
     defaultTheme: 'bootstrap-solar',
-    defaultTransformation: 'btn-dark',
+    defaultTransformation: 'theme-dark',
 
     promises: [],
 
@@ -86,8 +86,8 @@ window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
         ThemeEngine.generateColorTables();
 
-        if (!ThemeEngine.getTransformation()) {ThemeEngine.setTransformation()}
         if (!ThemeEngine.getTheme()) {ThemeEngine.setTheme()} else {ThemeEngine.switchTheme(ThemeEngine.getTheme())}
+        if (!ThemeEngine.getTransformation()) {ThemeEngine.setTransformation()} else {ThemeEngine.switchTheme(ThemeEngine.getTheme())}
         if (!TranslationEngine.getLanguage()) {TranslationEngine.setLanguage()} else {TranslationEngine.translateDocument(TranslationEngine.getLanguage())}
     });
 });
