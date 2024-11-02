@@ -5,9 +5,11 @@ let AutoLoader = {
     },
 
     scripts: [
+        'data/settings.js',
         'data/translations.js',
 
         'js/theme-engine.js',
+        'js/settings-engine.js',
         'js/translation-engine.js',
     ],
 
@@ -85,6 +87,7 @@ let AutoLoader = {
 
 window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
+        SettingsEngine.processDocument();
         ThemeEngine.generateColorTables();
 
         if (!ThemeEngine.getTheme()) {ThemeEngine.setTheme()} else {ThemeEngine.switchTheme(ThemeEngine.getTheme())}
