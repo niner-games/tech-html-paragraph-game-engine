@@ -5,7 +5,8 @@ let translationsTable = {
         "Welcome to our game!": "Witaj w naszej grze!",
         "What now?": "Co teraz?",
         "Base": "podstawowy",
-        "Negative": "odwrócony",
+        "Negative": "negatyw",
+        "Back": "Powrót",
     },
     sx:
     {
@@ -14,5 +15,6 @@ let translationsTable = {
         "What now?": "Co terŏz?",
         "Base": "bazowy",
         "Negative": "ôdwrōcōny",
+        "Back": "Nazŏd",
     }
 };
