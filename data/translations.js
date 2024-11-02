@@ -6,7 +6,7 @@ let translationsTable = {
         "What now?": "Co teraz?",
         "Base": "podstawowy",
         "Negative": "negatyw",
-        "Back": "Powrót",
+        "Back": "powrót",
     },
     sx:
     {
