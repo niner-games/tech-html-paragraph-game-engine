@@ -2,7 +2,7 @@ const AutoLoader = {
     stylesheets: {
         'main': 'css/style.css',
         'images': 'css/fontawesome.css',
-        'theme': 'css/bootstrap-yeti.css',
+        'theme': 'css/bootstrap-yeti.css'
     },
 
     scripts: [
@@ -12,7 +12,7 @@ const AutoLoader = {
         'js/theme-engine.js',
 
         'data/settings.js',
-        'data/translations.js',
+        'data/translations.js'
     ],
 
     languages: {
@@ -100,11 +100,44 @@ const AutoLoader = {
 
     isMentallyRetardedBrowser() {
         return navigator.userAgent.includes('Firefox');
+    },
+
+    getContext: function() {
+        let fullPath = window.location.href;
+        let filenameWithExtension = fullPath.substring(fullPath.lastIndexOf('/') + 1);
+
+        return filenameWithExtension.split('.')[0];
     }
 };
 
 window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
+        if (AutoLoader.getContext() === 'settings') {
+            SettingsEngine.generateButtons(
+                AutoLoader.languages,
+                ['btn-success'],
+                (event, key) => TranslationEngine.setLanguage(key),
+                document.getElementById('language-overlay'),
+                'language'
+            );
+
+            SettingsEngine.generateButtons(
+                AutoLoader.themes,
+                ['btn-warning'],
+                (event, key) => ThemeEngine.setTheme(key),
+                document.getElementById('theme-overlay'),
+                'theme'
+            );
+
+            SettingsEngine.generateButtons(
+                AutoLoader.transformations,
+                ['btn-info'],
+                (event, key) => ThemeEngine.setTransformation(key),
+                document.getElementById('transformation-overlay'),
+                'transformation'
+            );
+        }
+
         SettingsEngine.processDocument();
         ThemeEngine.generateColorTables();
 
