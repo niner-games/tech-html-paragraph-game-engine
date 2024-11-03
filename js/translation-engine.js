@@ -15,6 +15,7 @@ const TranslationEngine = {
         if (!language || typeof language !== 'string' || !AutoLoader.languages.hasOwnProperty(language)) {
             return AutoLoader.defaultLanguage;
         }
+
         return language;
     },
 

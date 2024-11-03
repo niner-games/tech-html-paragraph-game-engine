@@ -39,7 +39,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="d-flex flex-column align-items-center">
                             <button type="button" data-text="Continue" class="btn btn-info w-100 mb-1" id="continue" disabled></button>
-                            <button type="button" data-text="New Game" class="btn btn-primary w-100 mb-1" data-target="paragraph"></button>
+                            <button type="button" data-text="New Game" class="btn btn-primary w-100 mb-1" onclick="startANewGame()"></button>
 
                             <div class="d-flex w-100">
                                 <button type="button" data-text="Options" class="btn btn-primary w-50" data-target="settings"></button>
@@ -62,5 +62,12 @@
             </div>
         </div>
     </div>
+    <script>
+        function startANewGame() {
+            ParagraphEngine.setCurrentParagraphIndex('I');
+
+            window.location.href = 'paragraph.html';
+        }
+    </script>
 </body>
 </html>

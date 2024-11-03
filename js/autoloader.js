@@ -37,6 +37,7 @@ const AutoLoader = {
     },
 
     defaultLanguage: 'en',
+    defaultParagraph: 'I',
     defaultTheme: 'bootstrap-yeti',
     defaultTransformation: 'theme-dark',
 
@@ -140,7 +141,11 @@ window.addEventListener("load", function() {
         }
 
         if (AutoLoader.getContext() === 'paragraph') {
+            let paragraph = ParagraphEngine.getCurrentParagraphIndex();
 
+            ParagraphEngine.loadParagraph(paragraph);
+
+            // paragraph = (typeof paragraph === 'string' && paragraph !== '') ? paragraph : '';
         }
 
         SettingsEngine.processDocument();

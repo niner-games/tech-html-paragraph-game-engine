@@ -11,7 +11,7 @@ paragraphData = {
                 "en": "The entrance to the underground is wide, overgrown with grass and lush bushes. You adjust your clothes and equipment. Light the lantern! You enter the corridor. It is high, you don't have to bend down. It leads straight north. Soon you reach an intersection. It is T-shaped. The branches lead west, east, and south (where you came from).",
                 "pl": "Wejście do podziemi jest szerokie, obrośnięte trawą i bujnymi krzewami. Poprawiasz ubranie i ekwipunek. Zapal latarnię! Wchodzisz do korytarza. Jest wysoki, nie musisz się schylać. Prowadzi prosto na północ. Wkrótce dochodzisz do skrzyżowania. Ma ono kształt litery T. Odnogi prowadzą na zachód, wschód i południe (skąd przyszedłeś)."
             },
-            "image": "",
+            "image": "logo.png",
             "connectors": [
                 {
                     "label": {
@@ -34,7 +34,7 @@ paragraphData = {
                 "en": "The entrance to the underground is wide, overgrown with grass and lush bushes. You adjust your clothes and equipment. Light the lantern! You enter the corridor. It is high, you don't have to bend down. It leads straight north. Soon you reach an intersection. It is T-shaped. The branches lead west, east, and south (where you came from).",
                 "pl": "Wejście do podziemi jest szerokie, obrośnięte trawą i bujnymi krzewami. Poprawiasz ubranie i ekwipunek. Zapal latarnię! Wchodzisz do korytarza. Jest wysoki, nie musisz się schylać. Prowadzi prosto na północ. Wkrótce dochodzisz do skrzyżowania. Ma ono kształt litery T. Odnogi prowadzą na zachód, wschód i południe (skąd przyszedłeś)."
             },
-            "image": "",
+            "image": "logo.png",
             "connectors": [
                 {
                     "label": {
@@ -59,7 +59,7 @@ paragraphData = {
                 "sx": "Kopnij drzwi. Otwierają się i uderzają o skałę. Wchodzisz do środka z mieczem gotowym do zadania ciosu. Na pewno potwór nigdzie się nie ukrywa. Czuje się zbyt potężny. Tak, widzisz go przed sobą. Stoi na szeroko rozstawionych nogach. On też ma miecz. Czub wbił się w piasek. Opiera dłonie na rękojeści. Czeka. Ty nie czekaj! Jeśli masz hełm, załóż go koniecznie, zapewni ci +3W na czas trwania tej walki."
             },
             "image": {
-                "en": "image-en.png",
+                "en": "data/logo.png",
                 "pl": "002-pl.jpg",
                 "sx": ""
             },

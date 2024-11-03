@@ -6,39 +6,43 @@ const ParagraphEngine = {
         AutoLoader.setItem('paragraph', index);
     },
 
-    getTitle: function(paragraphId, language) {
+    getTitle: function(paragraph, language) {
         language = TranslationEngine.validateLanguage(language);
 
-        const paragraph = paragraphData.paragraphs.find(para => para.id === paragraphId.toString());
-        if (paragraph && paragraph.title[language]) {
-            return paragraph.title[language];
-        } else if (paragraph && paragraph.title['en']) {
-            return paragraph.title['en'];
+        const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
+        if (paragraphObj && paragraphObj.title[language]) {
+            return paragraphObj.title[language];
+        } else if (paragraphObj && paragraphObj.title['en']) {
+            return paragraphObj.title['en'];
         } else {
-            return "Title not available";
+            console.log("Title not available for paragraph no: " + paragraph + " and language: " + language);
+
+            return "No title!";
         }
     },
 
-    getDescription: function(paragraphId, language) {
+    getDescription: function(paragraph, language) {
         language = TranslationEngine.validateLanguage(language);
 
-        const paragraph = paragraphData.paragraphs.find(para => para.id === paragraphId.toString());
-        if (paragraph && paragraph.description[language]) {
-            return paragraph.description[language];
-        } else if (paragraph && paragraph.description['en']) {
-            return paragraph.description['en'];
+        const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
+        if (paragraphObj && paragraphObj.description[language]) {
+            return paragraphObj.description[language];
+        } else if (paragraphObj && paragraphObj.description['en']) {
+            return paragraphObj.description['en'];
         } else {
-            return "Description not available";
+            console.log("Description not available for paragraph no: " + paragraph + " and language: " + language);
+
+            return "No description!";
         }
     },
 
-    getConnectors: function(paragraphId, language) {
+    getConnectors: function(paragraph, language) {
         language = TranslationEngine.validateLanguage(language);
 
-        const paragraph = paragraphData.paragraphs.find(para => para.id === paragraphId.toString());
+        const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
 
-        if (paragraph) {
-            return paragraph.connectors.map(connector => {
+        if (paragraphObj) {
+            return paragraphObj.connectors.map(connector => {
                 if (connector.label[language]) {
                     return {
                         label: connector.label[language],
@@ -50,33 +54,97 @@ const ParagraphEngine = {
                         destination: connector.destination
                     };
                 } else {
+                    console.log("Label not available for paragraph no: " + paragraph + " and language: " + language);
+
                     return {
-                        label: "Label not available",
+                        label: "No label!",
                         destination: connector.destination
                     };
                 }
             });
         } else {
+            console.log("No connectors for paragraph no: " + paragraph + " and language: " + language);
+
             return null;
         }
     },
 
-    getImage: function(paragraphId, language) {
+    getImage: function(paragraph, language) {
         language = TranslationEngine.validateLanguage(language);
 
-        const paragraph = paragraphData.paragraphs.find(para => para.id === paragraphId.toString());
-        if (paragraph) {
-            if (typeof paragraph.image === 'string') {
-                return paragraph.image;
-            } else if (paragraph.image && paragraph.image[language]) {
-                return paragraph.image[language];
-            } else if (paragraph.image && paragraph.image['en']) {
-                return paragraph.image['en'];
+        const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
+
+        if (paragraphObj) {
+            if (typeof paragraphObj.image === 'string') {
+                return paragraphObj.image;
+            } else if (paragraphObj.image && paragraphObj.image[language]) {
+                return paragraphObj.image[language];
+            } else if (paragraphObj.image && paragraphObj.image['en']) {
+                return paragraphObj.image['en'];
             } else {
-                return "Image not available";
+                console.log("Image not available for paragraph no: " + paragraph + " and language: " + language);
+
+                return "No image!";
             }
         } else {
-            return "Image not available";
+            console.log("Image not available for paragraph no: " + paragraph + " and language: " + language);
+
+            return "No image!";
         }
+    },
+
+    loadImage: function(paragraph, language, imgElementId, callback) {
+        language = TranslationEngine.validateLanguage(language);
+
+        const imagePath = 'data/' + this.getImage(paragraph, language);
+        const img = document.getElementById(imgElementId);
+
+        if (img) {
+            img.onload = function() {
+                callback(true, imagePath);
+            };
+            img.onerror = function() {
+                callback(false, imagePath);
+            };
+            img.src = imagePath;
+        } else {
+            callback(false, 'Image element not found');
+        }
+    },
+
+    validateParagraph: function(paragraph) {
+        if (!paragraph || typeof paragraph !== 'string' || !paragraphData.paragraphs.some(para => para.id === paragraph.toString())) {
+            return AutoLoader.defaultParagraph;
+        }
+
+        return paragraph;
+    },
+
+    toggleColumns: function(condition) {
+        const leftColumn = document.getElementById('left-column');
+        const rightColumn = document.getElementById('right-column');
+
+        if (condition) {
+            leftColumn.style.display = 'block';
+            rightColumn.classList.remove('col-lg-12');
+            rightColumn.classList.add('col-lg-8');
+        } else {
+            leftColumn.style.display = 'none';
+            rightColumn.classList.remove('col-lg-8');
+            rightColumn.classList.add('col-lg-12');
+        }
+    },
+
+    loadParagraph: function(paragraph, language) {
+        paragraph = this.validateParagraph(paragraph);
+        language = TranslationEngine.validateLanguage(language);
+
+        this.loadImage(paragraph, language, 'paragraph-image', function(exists, imagePath) {
+            ParagraphEngine.toggleColumns(exists);
+
+            if (!exists) {
+                console.log("Image not found or element not found:", imagePath);
+            }
+        });
     }
 };
