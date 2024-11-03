@@ -23,11 +23,11 @@ const AutoLoader = {
 
     themes: {
         'bootstrap-flatly': 'Flatly',
-        'bootstrap-morph': 'Morph',
+        'bootstrap-yeti': 'Yeti',
         'bootstrap-sketchy': 'Sketchy',
-        'bootstrap-solar': 'Solar',
         'bootstrap-vibes': 'Vibes',
-        'bootstrap-yeti': 'Yeti'
+        'bootstrap-solar': 'Solar',
+        'bootstrap-sandstone': 'Sandstone'
     },
 
     transformations: {
