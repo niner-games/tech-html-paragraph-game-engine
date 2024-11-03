@@ -2,6 +2,7 @@ const ParagraphEngine = {
     getCurrentParagraphIndex() {
         return AutoLoader.getItem('paragraph');
     },
+
     setCurrentParagraphIndex: function(index) {
         AutoLoader.setItem('paragraph', index);
     },
@@ -126,16 +127,43 @@ const ParagraphEngine = {
         }
     },
 
+    generateButtons: function(buttons) {
+        let classes = ['w-25', 'w-50', 'w-75', 'w-100'];
+        let buttonGroup = document.getElementById('paragraph-buttons');
+
+        Array.from(buttonGroup.children).forEach(btn => {
+            btn.style.display = 'none';
+        });
+
+        buttons.forEach((button, index) => {
+            let btn = buttonGroup.children[index];
+
+            btn.innerText = button.label;
+            btn.style.display = 'block';
+
+            btn.onclick = () => {
+                ParagraphEngine.goToParagraph(button.destination);
+            };
+        });
+
+        buttonGroup.classList.remove(...classes);
+        buttonGroup.classList.add(`w-${buttons.length * 25}`);
+    },
+
+    goToParagraph: function(paragraph) {
+        let language = TranslationEngine.getLanguage();
+
+        this.setCurrentParagraphIndex(paragraph);
+        this.loadParagraph(paragraph, language);
+    },
+
     loadParagraph: function(paragraph, language) {
-        let title = document.getElementById('paragraph-title');
-        let description = document.getElementById('paragraph-description');
-
-        console.log(language);
-
         paragraph = this.validateParagraph(paragraph);
         language = TranslationEngine.validateLanguage(language);
 
-        console.log(language);
+        let buttons = this.getConnectors(paragraph, language);
+        let title = document.getElementById('paragraph-title');
+        let description = document.getElementById('paragraph-description');
 
         this.loadImage(paragraph, language, 'paragraph-image', function(exists, imagePath) {
             ParagraphEngine.toggleColumns(exists);
@@ -147,5 +175,7 @@ const ParagraphEngine = {
 
         title.textContent = this.getTitle(paragraph, language);
         description.textContent = this.getDescription(paragraph, language);
+
+        this.generateButtons(buttons);
     }
 };
