@@ -1,8 +1,8 @@
 const ChapterEngine = {
     getCurrentChapterIndex() {
-        return window.localStorage.getItem('chapter');
+        return AutoLoader.getItem('chapter');
     },
     setCurrentChapterIndex: function(index) {
-        window.localStorage.setItem('chapter', index);
+        AutoLoader.setItem('chapter', index);
     }
 }

@@ -3,11 +3,11 @@ const ThemeEngine = {
     invertedColors: {},
 
     getTheme() {
-        return window.localStorage.getItem('theme');
+        return AutoLoader.getItem('theme');
     },
 
     setTheme: function(theme = AutoLoader.defaultTheme) {
-        window.localStorage.setItem('theme', theme);
+        AutoLoader.setItem('theme', theme);
 
         AutoLoader.setActiveButton(theme);
         this.switchTheme(theme);
@@ -29,11 +29,11 @@ const ThemeEngine = {
     },
 
     getTransformation() {
-        return window.localStorage.getItem('transformation');
+        return AutoLoader.getItem('transformation');
     },
 
     setTransformation: function(transformation = AutoLoader.defaultTransformation) {
-        window.localStorage.setItem('transformation', transformation);
+        AutoLoader.setItem('transformation', transformation);
 
         AutoLoader.setActiveButton(transformation);
         this.switchTheme();

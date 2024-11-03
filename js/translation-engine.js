@@ -1,10 +1,10 @@
 const TranslationEngine = {
     getLanguage() {
-        return window.localStorage.getItem('language');
+        return AutoLoader.getItem('language');
     },
 
     setLanguage: function(language = AutoLoader.defaultLanguage) {
-        window.localStorage.setItem('language', language);
+        AutoLoader.setItem('language', language);
 
         AutoLoader.setActiveButton(language);
         this.translateDocument(language);

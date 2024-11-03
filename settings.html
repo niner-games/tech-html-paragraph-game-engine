@@ -59,7 +59,7 @@
                     button.classList.add('btn');
                     button.classList.add(colorsArray[i % colorsArray.length]);
 
-                    if (window.localStorage.getItem(storageKey) === key) {
+                    if (AutoLoader.getItem(storageKey) === key) {
                         button.classList.add('active');
                     }
 

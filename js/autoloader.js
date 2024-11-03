@@ -84,6 +84,22 @@ const AutoLoader = {
             targetButton.classList.add('active');
             targetButton.blur();
         }
+    },
+
+    setItem(key, value) {
+        let storage = (this.isMentallyRetardedBrowser()) ? window.sessionStorage : window.localStorage;
+
+        storage.setItem(key, value);
+    },
+
+    getItem(key) {
+        let storage = (this.isMentallyRetardedBrowser()) ? window.sessionStorage : window.localStorage;
+
+        return storage.getItem(key);
+    },
+
+    isMentallyRetardedBrowser() {
+        return navigator.userAgent.includes('Firefox');
     }
 };
 

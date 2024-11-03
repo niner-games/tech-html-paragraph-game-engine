@@ -74,6 +74,24 @@ Things to consider:
 
 On the other hands, you may use this entire code as-is, if it only compiles in your framework as expected.
 
+## Firefox
+
+The aim of this repository is to provide **working business model** only, not a final product. You can use this code to run
+our (or yours) games in a browser, but we are producing our games (even in web version) through some frameworks, based on this
+code, not directly from this repository.
+
+Even so, we have checked that this code works and can be used directly in every modern web browser... except for Firefox.
+
+Turns out that Firefox is [a mentally retarded web browser](https://onezeronull.com/2023/11/03/localstorage-vs-firefox/).
+As explained in the linked article, [**it doesn't share values stored in _localStorage_ between files**](https://stackoverflow.com/q/78146699/1469208)!
+
+This means that you will go to [Settings page](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/settings.html),
+change theme, font or language, go back to [menu](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/menu.html)
+or [paragraph](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/paragraph.html) and... your settings won't be reflected.
+
+Pity you... if you are still using this weird browser. [There's not much that we can do about this](https://stackoverflow.com/a/79152899/1469208). For this and many, many other stupid bugs or mentally retarded decisions made by Mozilla, like above, I stopped
+using this browser 20+ years ago.
+
 # Developer Tools
 
 ## JavaScript
