@@ -12,6 +12,7 @@ const AutoLoader = {
         'js/theme-engine.js',
 
         'data/settings.js',
+        'data/paragraphs.js',
         'data/translations.js'
     ],
 
@@ -136,6 +137,10 @@ window.addEventListener("load", function() {
                 document.getElementById('transformation-overlay'),
                 'transformation'
             );
+        }
+
+        if (AutoLoader.getContext() === 'paragraph') {
+
         }
 
         SettingsEngine.processDocument();
