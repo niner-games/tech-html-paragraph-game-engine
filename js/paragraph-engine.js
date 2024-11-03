@@ -133,7 +133,7 @@ const ParagraphEngine = {
 
         buttonGroup.innerHTML = '';
 
-        buttons.forEach((button, index) => {
+        buttons.forEach((button) => {
             let btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'btn btn-success button-25 me-2'; // Adjust class if needed
