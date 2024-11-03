@@ -29,7 +29,7 @@ const TranslationEngine = {
         matchingNodes.forEach(matchingElement => {
             let sourceText = matchingElement.getAttribute("data-text");
 
-            matchingElement.textContent = this.translateText(sourceText, language);
+            matchingElement.innerHTML = this.translateText(sourceText, language);
             matchingElement.style.direction = (language === "iw") ? "rtl" : "ltr";
         });
     },

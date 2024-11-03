@@ -7,30 +7,45 @@ const ParagraphEngine = {
         AutoLoader.setItem('paragraph', index);
     },
 
+    veryVerySimpleMarkdownfunction: function(input) {
+        return input
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/_(.*?)_/g, '<em>$1</em>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>');
+    },
+
     getTitle: function(paragraph, language) {
+        let title = '';
+
         language = TranslationEngine.validateLanguage(language);
 
         const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
         if (paragraphObj && paragraphObj.title[language]) {
-            return paragraphObj.title[language];
+            title = paragraphObj.title[language];
         } else if (paragraphObj && paragraphObj.title['en']) {
-            return paragraphObj.title['en'];
+            title = paragraphObj.title['en'];
         }
+
+        return this.veryVerySimpleMarkdownfunction(title);
     },
 
     getDescription: function(paragraph, language) {
+        let description;
+
         language = TranslationEngine.validateLanguage(language);
 
         const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
         if (paragraphObj && paragraphObj.description[language]) {
-            return paragraphObj.description[language];
+            description = paragraphObj.description[language];
         } else if (paragraphObj && paragraphObj.description['en']) {
-            return paragraphObj.description['en'];
+            description = paragraphObj.description['en'];
         } else {
             console.log('Description not available for paragraph no "' + paragraph + '" and language "' + language + '".');
 
-            return "No description!";
+            description = "No **NOT** found!";
         }
+
+        return this.veryVerySimpleMarkdownfunction(description);
     },
 
     getConnectors: function(paragraph, language) {
@@ -177,8 +192,8 @@ const ParagraphEngine = {
         });
 
         document.getElementById('paragraph-number').textContent = paragraph;
-        document.getElementById('paragraph-title').textContent = this.getTitle(paragraph, language);
-        document.getElementById('paragraph-description').textContent = this.getDescription(paragraph, language);
+        document.getElementById('paragraph-title').innerHTML = this.getTitle(paragraph, language);
+        document.getElementById('paragraph-description').innerHTML = this.getDescription(paragraph, language);
 
         this.generateButtons(buttons);
     }
