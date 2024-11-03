@@ -7,7 +7,6 @@
     <title data-text="Settings"></title>
 
     <script src="js/autoloader.js"></script>
-    <script src="js/settings-engine.js"></script>
 </head>
 <body>
 
@@ -42,8 +41,39 @@
     </div>
 
     <script>
+        function generateButtons(sourceArray, colorsArray, eventListener, parentElement, storageKey) {
+            let i = 0;
+            let style = "ltr";
+
+            for (let key in sourceArray) {
+                if (sourceArray.hasOwnProperty(key)) {
+                    let button = document.createElement("button");
+
+                    style = (key === "iw") ? "rtl" : style;
+
+                    button.value = key;
+                    button.type = 'button';
+                    button.style.direction = style;
+                    button.setAttribute('data-text', sourceArray[key]);
+
+                    button.classList.add('btn');
+                    button.classList.add(colorsArray[i % colorsArray.length]);
+
+                    if (window.localStorage.getItem(storageKey) === key) {
+                        button.classList.add('active');
+                    }
+
+                    button.addEventListener('click', (event) => eventListener(event, key));
+
+                    parentElement.appendChild(button);
+
+                    i++;
+                }
+            }
+        }
+
         window.addEventListener("load", function() {
-            SettingsEngine.generateButtons(
+            generateButtons(
                 AutoLoader.languages,
                 ['btn-success'],
                 (event, key) => TranslationEngine.setLanguage(key),
@@ -51,7 +81,7 @@
                 'language'
             );
 
-            SettingsEngine.generateButtons(
+            generateButtons(
                 AutoLoader.themes,
                 ['btn-warning'],
                 (event, key) => ThemeEngine.setTheme(key),
@@ -59,7 +89,7 @@
                 'theme'
             );
 
-            SettingsEngine.generateButtons(
+            generateButtons(
                 AutoLoader.transformations,
                 ['btn-info'],
                 (event, key) => ThemeEngine.setTransformation(key),

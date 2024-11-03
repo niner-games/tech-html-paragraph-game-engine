@@ -1,4 +1,4 @@
-let AutoLoader = {
+const AutoLoader = {
     stylesheets: {
         'main': 'css/style.css',
         'images': 'css/fontawesome.css',
@@ -6,13 +6,13 @@ let AutoLoader = {
     },
 
     scripts: [
+        'js/translation-engine.js',
+        'js/settings-engine.js',
+        'js/chapter-engine.js',
+        'js/theme-engine.js',
+
         'data/settings.js',
         'data/translations.js',
-
-        'js/theme-engine.js',
-        'js/chapter-engine.js',
-        'js/settings-engine.js',
-        'js/translation-engine.js',
     ],
 
     languages: {

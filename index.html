@@ -77,19 +77,19 @@
                             setTimeout(showNextItem, 1000);
                         }, 3000);
                     } else {
-                        goToMenu();
+                        gotoMenu();
                     }
                 }, 1000);
             }
 
-            function goToMenu() {
+            function gotoMenu() {
                 window.location.href = 'menu.html';
             }
 
             setTimeout(showNextItem, 1000);
 
             document.getElementById('background').addEventListener('click', function() {
-                goToMenu();
+                gotoMenu();
             });
         });
     </script>
