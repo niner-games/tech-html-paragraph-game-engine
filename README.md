@@ -48,7 +48,7 @@ We aim for a maximum simplicity:
    - Change `languages` group and entries in [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) file to modify list of supported languages
    - Change `themes` and corresponding files in [_css_](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/css) folder to modify number of supported Bootstrap themes
 
-2. Modify entries in [_data/chapters.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/chapters.js), [_data/settings.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/settings.js) and [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) files to provide whole new story.
+2. Modify entries in [_data/paragraphs.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/paragraphs.js), [_data/settings.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/settings.js) and [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) files to provide whole new story.
 
 And you are ready to go with a new game in browser.
 
@@ -67,9 +67,9 @@ Things to consider:
 
 1. Pure JavaScript cannot read JSON files stored locally:
 
-    - The [_data/chapters.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/chapters.js) and [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) are not pure JSON files, but a JavaScript scripts with a typical JavaScript object implementation inside
+    - The [_data/paragraphs.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/paragraphs.js) and [_data/translations.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/data/translations.js) are not pure JSON files, but a JavaScript scripts with a typical JavaScript object implementation inside
     - You must to strip things like `let Translations = ` of and add quotes to keys like `en` or `pl` turning JS object into JSON file, if you want to use pure JSON files
-    - You need to adjust code in [_js/chapter-engine.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/js/chapter-engine.js) and [_js/translation-engine.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/js/translation-engine.js) files (and possibly [_js/autoloader.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/js/autoloader.js) file too) to make it read translations (and chapters) from JSON files correctly (if you want that)
+    - You need to adjust code in [_js/paragraph-engine.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/js/paragraph-engine.js) and [_js/translation-engine.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/js/translation-engine.js) files (and possibly [_js/autoloader.js_](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/js/autoloader.js) file too) to make it read translations (and paragraphs) from JSON files correctly (if you want that)
 
 2. You need to... well... never mind... this is just a placeholder.
 
@@ -176,7 +176,7 @@ Also quick guides on how to work on Base64 in: [Javascript](https://base64.guru/
 
 For this particular repository (game's engine implementation in HTML) we _may_ use some of the following tools directly 
 in source code. To i.e. present player a path that he had already played through (and in debug mode, to render the entire
-chapters set).
+paragraphs set).
 
 For some actual game implementation (in separate repository) we can use [MermaidJS tool for JavaScript](https://mermaid.js.org/) across entire
 GitHub (in [issues](https://github.com/ninergames/test-renpy-engine/issues/23), [discussions](https://github.com/ninergames/test-renpy-engine/discussions/21) and [in text files](https://github.com/ninergames/test-renpy-engine)), for an actual game implementation process. I.e. drawing

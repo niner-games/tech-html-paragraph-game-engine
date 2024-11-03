@@ -8,7 +8,7 @@ const AutoLoader = {
     scripts: [
         'js/translation-engine.js',
         'js/settings-engine.js',
-        'js/chapter-engine.js',
+        'js/paragraph-engine.js',
         'js/theme-engine.js',
 
         'data/settings.js',
