@@ -96,7 +96,7 @@ const ParagraphEngine = {
     loadImage: function(paragraph, language, imgElementId, callback) {
         language = TranslationEngine.validateLanguage(language);
 
-        const imagePath = 'data/' + this.getImage(paragraph, language);
+        const imagePath = 'data/images/' + this.getImage(paragraph, language);
         const img = document.getElementById(imgElementId);
 
         if (img) {

@@ -11,7 +11,7 @@ paragraphData = {
                 "en": "The entrance to the underground is wide, overgrown with grass and lush bushes. You adjust your clothes and equipment. Light the lantern! You enter the corridor. It is high, you don't have to bend down. It leads straight north. Soon you reach an intersection. It is T-shaped. The branches lead west, east, and south (where you came from).",
                 "pl": "Wejście do podziemi jest szerokie, obrośnięte trawą i bujnymi krzewami. Poprawiasz ubranie i ekwipunek. Zapal latarnię! Wchodzisz do korytarza. Jest wysoki, nie musisz się schylać. Prowadzi prosto na północ. Wkrótce dochodzisz do skrzyżowania. Ma ono kształt litery T. Odnogi prowadzą na zachód, wschód i południe (skąd przyszedłeś)."
             },
-            "image": "logo.png",
+            "image": "i.jpg",
             "connectors": [
                 {
                     "label": {
