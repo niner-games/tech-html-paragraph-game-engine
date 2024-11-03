@@ -78,12 +78,20 @@
                             setTimeout(showNextItem, 1000);
                         }, 3000);
                     } else {
-                        window.location.href = 'menu.html';
+                        gotoMenu();
                     }
                 }, 1000);
             }
 
+            function gotoMenu() {
+                window.location.href = 'menu.html';
+            }
+
             setTimeout(showNextItem, 1000);
+
+            document.getElementById('background').addEventListener('click', function(event) {
+                gotoMenu();
+            });
         });
     </script>
 </body>
