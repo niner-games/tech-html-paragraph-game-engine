@@ -30,7 +30,6 @@
         }
 
         .img-responsive {
-            /*max-width: 33%;*/
             width: 33%;
             height: auto;
         }
@@ -41,7 +40,7 @@
         }
     </style>
 </head>
-<body>
+<body class="visible">
     <div id="background" class="d-flex justify-content-center align-items-center vh-100">
         <div class="sequence">
             <div class="fs-2 fade-item">
@@ -89,7 +88,7 @@
 
             setTimeout(showNextItem, 1000);
 
-            document.getElementById('background').addEventListener('click', function(event) {
+            document.getElementById('background').addEventListener('click', function() {
                 gotoMenu();
             });
         });
