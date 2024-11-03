@@ -22,6 +22,7 @@ this source code in some mobile apps framework etc. See below for details.
 - [General Information](#general-information)
     * [Simplicity](#simplicity)
     * [Pure JS Code](#pure-js-code)
+    * [Firefox](#firefox)
 - [Developer Tools](#developer-tools)
     * [JavaScript](#javascript)
     * [JSON](#json)
@@ -87,7 +88,7 @@ As explained in the linked article, [**it doesn't share values stored in _localS
 
 This means that you will go to [Settings page](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/settings.html),
 change theme, font or language, go back to [menu](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/menu.html)
-or [paragraph](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/paragraph.html) and... your settings won't be reflected.
+or [paragraph](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/paragraph.html) and... your settings won't be reflected (or actually... they will be reflected [until you close tab or browser](https://github.com/niner-games/tech-html-paragraph-game-engine/commit/8a1a8121a1ce67c6b048e0e97ab47cbb8e5aeadf#diff-b602b2240cbcb4e4de89f3446fd527f80e57a44d4f7bdb011023f9c109c798de).
 
 Pity you... if you are still using this weird browser. [There's not much that we can do about this](https://stackoverflow.com/a/79152899/1469208). For this and many, many other stupid bugs or mentally retarded decisions made by Mozilla, like above, I stopped
 using this browser 20+ years ago.
