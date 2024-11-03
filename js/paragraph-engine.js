@@ -128,26 +128,31 @@ const ParagraphEngine = {
     },
 
     generateButtons: function(buttons) {
-        let classes = ['w-25', 'w-50', 'w-75', 'w-100'];
         let buttonGroup = document.getElementById('paragraph-buttons');
+        const classes = ['w-25', 'w-50', 'w-75', 'w-100'];
 
-        Array.from(buttonGroup.children).forEach(btn => {
-            btn.style.display = 'none';
-        });
+        buttonGroup.innerHTML = '';
 
         buttons.forEach((button, index) => {
-            let btn = buttonGroup.children[index];
-
+            let btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn btn-success button-25 me-2'; // Adjust class if needed
+            btn.classList.add(`w-${100 / buttons.length}`);
             btn.innerText = button.label;
-            btn.style.display = 'block';
-
             btn.onclick = () => {
                 ParagraphEngine.goToParagraph(button.destination);
             };
+            buttonGroup.appendChild(btn);
         });
 
+        if (buttonGroup.children.length > 0) {
+            buttonGroup.firstElementChild.classList.add('first-child');
+            buttonGroup.lastElementChild.classList.add('last-child');
+        }
+
         buttonGroup.classList.remove(...classes);
-        buttonGroup.classList.add(`w-${buttons.length * 25}`);
+        const newClass = `w-${buttons.length * 25}`;
+        buttonGroup.classList.add(newClass);
     },
 
     goToParagraph: function(paragraph) {

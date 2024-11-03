@@ -39,8 +39,8 @@ const ThemeEngine = {
         this.switchTheme();
     },
     
-    processColors(refreshCurrentColors = false) {
-        let colorTable = (this.getTransformation() === 'theme-dark' && !refreshCurrentColors) ? this.invertedColors : this.elementColors;
+    processColors() {
+        let colorTable = (this.getTransformation() === 'theme-dark') ? this.invertedColors : this.elementColors;
         let imgStyleFilter = (this.getTransformation() === 'theme-dark') ? 'invert(1)' : '';
 
         Object.keys(colorTable).forEach(id => {
