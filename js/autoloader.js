@@ -144,6 +144,18 @@ window.addEventListener("load", function() {
             ParagraphEngine.goToParagraph(ParagraphEngine.getCurrentParagraphIndex());
         }
 
+        if (AutoLoader.getContext() === 'menu') {
+            let continueButton = document.getElementById('continue-button');
+
+            console.log(ParagraphEngine.getCurrentParagraphIndex());
+
+            if (Number(ParagraphEngine.getCurrentParagraphIndex()) > 0) {
+                continueButton.removeAttribute('disabled');
+            } else {
+                continueButton.setAttribute('disabled', 'disabled');
+            }
+        }
+
         SettingsEngine.processDocument();
         ThemeEngine.generateColorTables();
 

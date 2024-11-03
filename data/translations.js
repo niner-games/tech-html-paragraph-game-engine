@@ -11,7 +11,7 @@ let Translations = {
         "Continue": "Kontynuuj",
         "New Game": "Nowa gra",
         "Options": "Opcje",
-        "(some translations are AI-generated and may not be very accurate)": "(niektóre tłumaczenia są generowane przez sztuczną inteligencję i mogą nie być zbyt dokładne)",
+        "(some translations are AI-generated and may not be very accurate)": "(niektóre tłumaczenia stworzyła sztuczna inteligencja i mogą one nie być zbyt trafne)",
     },
     sx:
     {
@@ -26,6 +26,6 @@ let Translations = {
         "New Game": "Nowy szpil",
         "Options": "Ôpcyje",
         "Menu": "Myni",
-        "(some translations are AI-generated and may not be very accurate)": "(niykere przekładu sōm gynerowane bez sztucznõ inteligyncyjõ i mogōm niy być za wiela akuratne)",
+        "(some translations are AI-generated and may not be very accurate)": "(niykere przekładu stworziła sztucznŏ inteligyncyjŏ i mogōm ône niy być za wiela trŏfne)",
     }
 };
