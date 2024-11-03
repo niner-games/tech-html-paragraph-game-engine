@@ -135,12 +135,12 @@ Some other optimizers and validators, if someone would still dare to claim that 
 
 ## Markdown
 
-Markdown isn't currently support in our paragraph games, but it will most likely be supported soon. Only a very basic set
-of Markdown will used, i.e. limited to simple text formatting only. No embed images, links, tables etc.
+Markdown is [currently supported](https://github.com/niner-games/tech-html-paragraph-game-engine/commit/0c7da09327905344b5a839026c1163dde195e9b7) in our paragraph games at [a very, very basic level](https://github.com/niner-games/tech-html-paragraph-game-engine/commit/0c7da09327905344b5a839026c1163dde195e9b7#diff-5657f96159c64f9e7d91b691566e7e6ab679e794fe3a17ca5db5a1601fccea0bR10),
+limited to simple text formatting only. No embed images, links, tables etc. We support `**` for making text bold and `_` 
+or `*` for making text italics. That's all.
 
-GitHub itself has a great Markdown support. But when writing large texts, it is often tiring to constantly switch between editor and preview.
-
-In this case [StackEdit](https://stackedit.io/app#) can be a good replacement:
+For such limited usage, editing texts in simple Notepad or Notepad++ or your favorite IDE should be enough. But, if you'd
+like to taste something "bigger" then you may consider [StackEdit](https://stackedit.io/app#) as a replacement:
 
 - Renders Markdown as you type
 - Has reach Markdown editor; source colouring and formatting helps editing quicker
@@ -152,8 +152,6 @@ In this case [StackEdit](https://stackedit.io/app#) can be a good replacement:
 - Has a handy document's table of contents and Markdown cheatsheet
 - Supports simple templates for exporting and publishing
 - When rendering live, offers full support for MermaidJS diagrams [see below](#example)
-
-This is especially important when editing wiki pages, which seems to be a secondary-citizen to GitHub and most valuable functions (that works in repos and issues) doesn't work here (like no support for keyboard shortcuts etc).
 
 ## Base64
 
