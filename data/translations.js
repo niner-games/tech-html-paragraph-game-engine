@@ -10,7 +10,7 @@ let Translations = {
         "Back": "Powrót",
         "Continue": "Kontynuuj",
         "New Game": "Nowa gra",
-        "Settings": "Ustawienia",
+        "Options": "Opcje",
         "Main Menu": "Menu główne",
         "(some translations are AI-generated and may not be very accurate)": "(niektóre tłumaczenia są generowane przez sztuczną inteligencję i mogą nie być zbyt dokładne)",
     },
@@ -25,7 +25,7 @@ let Translations = {
         "Back": "Nazŏd",
         "Continue": "Kōntynuuj",
         "New Game": "Nowy szpil",
-        "Settings": "Ustawiyniŏ",
+        "Options": "Ôpcyje",
         "Main Menu": "Myni głowne",
         "(some translations are AI-generated and may not be very accurate)": "(niykere przekładu sōm gynerowane bez sztucznõ inteligyncyjõ i mogōm niy być za wiela akuratne)",
     }
