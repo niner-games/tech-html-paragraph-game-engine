@@ -20,6 +20,10 @@ const SettingsEngine = {
         window.location.href = 'settings.html';
     },
 
+    goToIntroPage: function() {
+        window.location.href = 'index.html';
+    },
+
     returnFromSettingsPage: function() {
         window.history.back();
     },

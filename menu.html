@@ -38,11 +38,13 @@
 
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="d-flex flex-column align-items-center">
-                        <div class="btn-group-vertical w-100">
-                            <button id="continue" type="button" data-text="Continue" class="btn btn-info" disabled></button>
-                            <button type="button" data-text="New Game" class="btn btn-primary" onclick="ChapterEngine.goToChapterPage()"></button>
-                            <button type="button" data-text="Settings" class="btn btn-primary" onclick="SettingsEngine.goToSettingsPage()"></button>
-                        </div>
+                            <button type="button" data-text="Continue" class="btn btn-info w-100 mb-1" id="continue" disabled></button>
+                            <button type="button" data-text="New Game" class="btn btn-primary w-100 mb-1" onclick="ChapterEngine.goToChapterPage()"></button>
+
+                            <div class="d-flex w-100">
+                                <button type="button" data-text="Settings" class="btn btn-primary w-50" onclick="SettingsEngine.goToSettingsPage()"></button>
+                                <button type="button" data-text="Intro" class="btn btn-dark w-50 ms-1" onclick="SettingsEngine.goToIntroPage()"></button>
+                            </div>
                     </div>
                 </div>
 
