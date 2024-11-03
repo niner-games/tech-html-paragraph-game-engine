@@ -14,18 +14,17 @@ const SettingsEngine = {
         matchingNodes.forEach(matchingElement => {
             matchingElement.textContent = this.getSettingValue(matchingElement.getAttribute("data-key"));
         });
-    },
 
-    goToSettingsPage: function() {
-        window.location.href = 'settings.html';
-    },
+        matchingNodes = document.querySelectorAll('[data-target]');
 
-    goToIntroPage: function() {
-        window.location.href = 'index.html';
-    },
+        if (matchingNodes.length === 0) return null;
 
-    returnFromSettingsPage: function() {
-        window.history.back();
+        matchingNodes.forEach(matchingElement => {
+            matchingElement.addEventListener('click', () => {
+                window.location.href = matchingElement.getAttribute('data-target') + '.html';
+            });
+        });
+
     },
 
     generateButtons(sourceArray, colorsArray, eventListener, parentElement, storageKey) {
