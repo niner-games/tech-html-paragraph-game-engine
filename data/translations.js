@@ -12,6 +12,7 @@ let Translations = {
         "New Game": "Nowa gra",
         "Settings": "Ustawienia",
         "Main Menu": "Menu główne",
+        "(some translations are AI-generated and may not be very accurate)": "(niektóre tłumaczenia są generowane przez sztuczną inteligencję i mogą nie być zbyt dokładne)",
     },
     sx:
     {
@@ -26,5 +27,6 @@ let Translations = {
         "New Game": "Nowy szpil",
         "Settings": "Ustawiyniŏ",
         "Main Menu": "Myni głowne",
+        "(some translations are AI-generated and may not be very accurate)": "(niykere przekładu sōm gynerowane bez sztucznõ inteligyncyjõ i mogōm niy być za wiela akuratne)",
     }
 };
