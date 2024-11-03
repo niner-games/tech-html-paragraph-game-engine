@@ -141,11 +141,10 @@ window.addEventListener("load", function() {
         }
 
         if (AutoLoader.getContext() === 'paragraph') {
+            let language = TranslationEngine.getLanguage();
             let paragraph = ParagraphEngine.getCurrentParagraphIndex();
 
-            ParagraphEngine.loadParagraph(paragraph);
-
-            // paragraph = (typeof paragraph === 'string' && paragraph !== '') ? paragraph : '';
+            ParagraphEngine.loadParagraph(paragraph, language);
         }
 
         SettingsEngine.processDocument();

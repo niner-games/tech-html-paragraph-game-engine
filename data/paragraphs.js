@@ -3,9 +3,9 @@ paragraphData = {
         {
             "id": "I",
             "title": {
-                "en": "Introduction",
+                "en": "Hello",
                 "pl": "Wstęp",
-                "sx": "Wstymp",
+                "sx": "Hajo",
             },
             "description": {
                 "en": "The entrance to the underground is wide, overgrown with grass and lush bushes. You adjust your clothes and equipment. Light the lantern! You enter the corridor. It is high, you don't have to bend down. It leads straight north. Soon you reach an intersection. It is T-shaped. The branches lead west, east, and south (where you came from).",

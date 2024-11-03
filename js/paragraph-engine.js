@@ -14,10 +14,6 @@ const ParagraphEngine = {
             return paragraphObj.title[language];
         } else if (paragraphObj && paragraphObj.title['en']) {
             return paragraphObj.title['en'];
-        } else {
-            console.log("Title not available for paragraph no: " + paragraph + " and language: " + language);
-
-            return "No title!";
         }
     },
 
@@ -30,7 +26,7 @@ const ParagraphEngine = {
         } else if (paragraphObj && paragraphObj.description['en']) {
             return paragraphObj.description['en'];
         } else {
-            console.log("Description not available for paragraph no: " + paragraph + " and language: " + language);
+            console.log('Description not available for paragraph no "' + paragraph + '" and language "' + language + '".');
 
             return "No description!";
         }
@@ -54,10 +50,10 @@ const ParagraphEngine = {
                         destination: connector.destination
                     };
                 } else {
-                    console.log("Label not available for paragraph no: " + paragraph + " and language: " + language);
+                    console.log('Label not available for paragraph no "' + paragraph + '" and language "' + language + '".');
 
                     return {
-                        label: "No label!",
+                        label: "!!!",
                         destination: connector.destination
                     };
                 }
@@ -81,16 +77,11 @@ const ParagraphEngine = {
                 return paragraphObj.image[language];
             } else if (paragraphObj.image && paragraphObj.image['en']) {
                 return paragraphObj.image['en'];
-            } else {
-                console.log("Image not available for paragraph no: " + paragraph + " and language: " + language);
-
-                return "No image!";
             }
-        } else {
-            console.log("Image not available for paragraph no: " + paragraph + " and language: " + language);
-
-            return "No image!";
         }
+        console.log('Image not available for paragraph no "' + paragraph + '" and language "' + language + '".');
+
+        return "";
     },
 
     loadImage: function(paragraph, language, imgElementId, callback) {
@@ -136,8 +127,15 @@ const ParagraphEngine = {
     },
 
     loadParagraph: function(paragraph, language) {
+        let title = document.getElementById('paragraph-title');
+        let description = document.getElementById('paragraph-description');
+
+        console.log(language);
+
         paragraph = this.validateParagraph(paragraph);
         language = TranslationEngine.validateLanguage(language);
+
+        console.log(language);
 
         this.loadImage(paragraph, language, 'paragraph-image', function(exists, imagePath) {
             ParagraphEngine.toggleColumns(exists);
@@ -146,5 +144,8 @@ const ParagraphEngine = {
                 console.log("Image not found or element not found:", imagePath);
             }
         });
+
+        title.textContent = this.getTitle(paragraph, language);
+        description.textContent = this.getDescription(paragraph, language);
     }
 };
