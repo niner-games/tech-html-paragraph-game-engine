@@ -162,8 +162,6 @@ const ParagraphEngine = {
         language = TranslationEngine.validateLanguage(language);
 
         let buttons = this.getConnectors(paragraph, language);
-        let title = document.getElementById('paragraph-title');
-        let description = document.getElementById('paragraph-description');
 
         this.loadImage(paragraph, language, 'paragraph-image', function(exists, imagePath) {
             ParagraphEngine.toggleColumns(exists);
@@ -173,8 +171,9 @@ const ParagraphEngine = {
             }
         });
 
-        title.textContent = this.getTitle(paragraph, language);
-        description.textContent = this.getDescription(paragraph, language);
+        document.getElementById('paragraph-number').textContent = paragraph;
+        document.getElementById('paragraph-title').textContent = this.getTitle(paragraph, language);
+        document.getElementById('paragraph-description').textContent = this.getDescription(paragraph, language);
 
         this.generateButtons(buttons);
     }
