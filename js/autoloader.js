@@ -147,8 +147,6 @@ window.addEventListener("load", function() {
         if (AutoLoader.getContext() === 'menu') {
             let continueButton = document.getElementById('continue-button');
 
-            console.log(ParagraphEngine.getCurrentParagraphIndex());
-
             if (Number(ParagraphEngine.getCurrentParagraphIndex()) > 0) {
                 continueButton.removeAttribute('disabled');
             } else {
@@ -158,6 +156,7 @@ window.addEventListener("load", function() {
 
         SettingsEngine.processDocument();
         ThemeEngine.generateColorTables();
+        TranslationEngine.setDefaultLanguage();
 
         if (!ThemeEngine.getTheme()) {ThemeEngine.setTheme()} else {ThemeEngine.switchTheme(ThemeEngine.getTheme())}
         if (!ThemeEngine.getTransformation()) {ThemeEngine.setTransformation()} else {ThemeEngine.switchTheme(ThemeEngine.getTheme())}

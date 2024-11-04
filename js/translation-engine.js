@@ -45,5 +45,11 @@ const TranslationEngine = {
         translatedText = (typeof Translations[language] === "undefined") ? sourceText : Translations[language][sourceText];
 
         return (typeof translatedText === "undefined" || translatedText === "") ? sourceText : translatedText;
+    },
+
+    setDefaultLanguage: function() {
+        AutoLoader.defaultLanguage = navigator.language || navigator.languages[0];
+
+        this.setLanguage();
     }
 };
