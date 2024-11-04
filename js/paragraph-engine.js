@@ -22,8 +22,8 @@ const ParagraphEngine = {
         const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
         if (paragraphObj && paragraphObj.title[language]) {
             title = paragraphObj.title[language];
-        } else if (paragraphObj && paragraphObj.title['en']) {
-            title = paragraphObj.title['en'];
+        } else if (paragraphObj && paragraphObj.title[AutoLoader.defaultLanguage]) {
+            title = paragraphObj.title[AutoLoader.defaultLanguage];
         }
 
         return this.veryVerySimpleMarkdownfunction(title);
@@ -37,8 +37,8 @@ const ParagraphEngine = {
         const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
         if (paragraphObj && paragraphObj.description[language]) {
             description = paragraphObj.description[language];
-        } else if (paragraphObj && paragraphObj.description['en']) {
-            description = paragraphObj.description['en'];
+        } else if (paragraphObj && paragraphObj.description[AutoLoader.defaultLanguage]) {
+            description = paragraphObj.description[AutoLoader.defaultLanguage];
         } else {
             console.log('Description not available for paragraph no "' + paragraph + '" and language "' + language + '".');
 
@@ -60,9 +60,9 @@ const ParagraphEngine = {
                         label: connector.label[language],
                         destination: connector.destination
                     };
-                } else if (connector.label['en']) {
+                } else if (connector.label[AutoLoader.defaultLanguage]) {
                     return {
-                        label: connector.label['en'],
+                        label: connector.label[AutoLoader.defaultLanguage],
                         destination: connector.destination
                     };
                 } else {
@@ -91,8 +91,8 @@ const ParagraphEngine = {
                 return paragraphObj.image;
             } else if (paragraphObj.image && paragraphObj.image[language]) {
                 return paragraphObj.image[language];
-            } else if (paragraphObj.image && paragraphObj.image['en']) {
-                return paragraphObj.image['en'];
+            } else if (paragraphObj.image && paragraphObj.image[AutoLoader.defaultLanguage]) {
+                return paragraphObj.image[AutoLoader.defaultLanguage];
             }
         }
         console.log('Image not available for paragraph no "' + paragraph + '" and language "' + language + '".');
