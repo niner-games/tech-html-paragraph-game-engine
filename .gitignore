@@ -4,3 +4,6 @@
 # Other
 .DS_Store
 Thumbs.db
+
+# Game Contents
+/data
