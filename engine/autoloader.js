@@ -6,10 +6,10 @@ const AutoLoader = {
     },
 
     scripts: [
-        'js/translation-engine.js',
-        'js/settings-engine.js',
-        'js/paragraph-engine.js',
-        'js/theme-engine.js',
+        'engine/translation-engine.js',
+        'engine/settings-engine.js',
+        'engine/paragraph-engine.js',
+        'engine/theme-engine.js',
 
         'data/settings.js',
         'data/paragraphs.js',
