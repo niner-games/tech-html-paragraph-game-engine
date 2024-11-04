@@ -119,9 +119,9 @@ window.addEventListener("load", function() {
         }
 
         if (AutoLoader.getContext() === 'settings') {
-            let themesCount = 0;
-            let languagesCount = 0;
-            let transformationsCount = 0;
+            let themesCount;
+            let languagesCount;
+            let transformationsCount;
 
 
             languagesCount = SettingsEngine.generateButtons(

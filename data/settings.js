@@ -1,3 +1,3 @@
 const Settings = {
-    "game-title": "Our Cool Game Title"
+    "title": "Our Cool Game Title"
 };
