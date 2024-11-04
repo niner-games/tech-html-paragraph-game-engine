@@ -36,7 +36,7 @@ const AutoLoader = {
         'theme-dark': 'Negative'
     },
 
-    defaultLanguage: 'pl',
+    defaultLanguage: 'en',
     defaultParagraph: 'I',
     defaultTheme: 'bootstrap-yeti',
     defaultTransformation: 'theme-dark',
@@ -109,11 +109,42 @@ const AutoLoader = {
         let filenameWithExtension = fullPath.substring(fullPath.lastIndexOf('/') + 1);
 
         return filenameWithExtension.split('.')[0];
+    },
+
+    updateDefaultValues: function() {
+        const attributes = [
+            'themes',
+            'languages',
+            'defaultTheme',
+            'transformations',
+            'defaultLanguage',
+            'defaultParagraph',
+            'defaultTransformation'
+        ];
+
+        attributes.forEach(attribute => {
+            const value = SettingsEngine.getSettingValue(attribute);
+
+            if (value !== undefined) {
+                if (
+                    (typeof value === 'object') ||
+                    (Array.isArray(value) && value.length > 0) ||
+                    (typeof value === 'number' && !isNaN(value)) ||
+                    (typeof value === 'string' && value.trim() !== '')
+                ) {
+                    this[attribute] = value;
+                }
+            }
+
+            console.log(attribute + ' = "' + JSON.stringify(this[attribute]) + '"');
+        });
     }
 };
 
 window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
+        AutoLoader.updateDefaultValues();
+
         if (AutoLoader.getContext() === 'paragraph') {
             ParagraphEngine.goToParagraph(ParagraphEngine.getCurrentParagraphIndex());
         }
