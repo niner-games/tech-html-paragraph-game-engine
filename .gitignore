@@ -1,31 +1,6 @@
 # PhpStorm
 .idea
 
-# NetBeans
-nbproject
-
-# Zend Studio
-.buildpath
-.project
-.settings
-
-# Composer
-composer.phar
-composer.lock
-/vendor
-/.vagrant
-
-# PHPUnit
-phpunit.phar
-/phpunit.xml
-tests/_output/*
-tests/_support/_generated
-
-# Macintosh
+# Other
 .DS_Store
-
-# Windows
 Thumbs.db
-
-# GitHub
-.github
