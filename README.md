@@ -9,7 +9,7 @@
 <h1 align="center">Paragraph Game's Engine</h1><br />
 
 This is a HTML implementation of our paragraph game's engine. It is 100% aimed to be working in pure JavaScript / bare-bone
-web browsers. No Node.js etc. or installing anything needed. Just launch [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html)
+web browsers. No Node.js etc. or installing anything needed. Just launch `index.html`
 file in your browser and you should be ready to go.
 
 If you want to read about game configuration or creating new game process then you follow to [our Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki).
@@ -27,14 +27,13 @@ If you want to read about game configuration or creating new game process then y
 
 Each paragraph game consists of:
 
-- Game data, styles and configuration stored in [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder
-- Game engine stored in [`engine`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/engine) folder
-- Game views stored in [_root_](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main) folder
+- Game data, styles and configuration stored in `data` folder
+- - Game engine stored in `engine` folder
+- Game views stored in _root_ folder
 
-The **core** element of each game is _a set of files_ stored in [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data)
-folder. But, this folder **is ignored** in this repository meaning that you must create it manually and put some files there
-(see below). Otherwise, the game **will crash** after you run it from [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html)
-file.
+The **core** element of each game is _a set of files_ stored in `data` folder. But, this folder **is ignored** in this repository
+meaning that you must create it manually and put some files there (see below). Otherwise, the game **will crash** after you
+run it from `index.html` file.
 
 # Creating a new game
 
@@ -52,20 +51,26 @@ file.
 git clone git@github.com:niner-games/tech-html-paragraph-game-engine.git game-name
 ```
 
-2. Clone **external repository** (_game data_) locally to [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder:
+2. Clone **external repository** (_game data_) locally to `data` folder:
 
 ```bash
 cd game-name
 git clone git@github.com:niner-games/arizona-gold.git data
 ```
 
-3. If pulled _game data_ repository is empty, create fresh set of files in [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder (see in [Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki)) or manually copy example files from [this repository](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) and adjust them to your needs
-4. Run [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html) file in your browser to test, if everything works fine
+3. If pulled _game data_ repository is empty, create fresh set of files in `data` folder (see in [Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki)) or manually copy example files from this repository and adjust them to your needs
+4. Run `index.html` file in your browser to test, if everything works fine
+
+If you want to take contents of `data` folder from this repository, you need to browse commit history and find [the last one](https://github.com/niner-games/tech-html-paragraph-game-engine/commit/60f0912c919cd391b112aa0fd39eb36c2dd12396)
+that was made before making `data` folder ignored (which removed it from repository index) -- [`60f0912`](https://github.com/niner-games/tech-html-paragraph-game-engine/commit/60f0912c919cd391b112aa0fd39eb36c2dd12396).
+Browsing [repository state at that moment](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/60f0912c919cd391b112aa0fd39eb36c2dd12396)
+will give you access to the [last stored version](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/60f0912c919cd391b112aa0fd39eb36c2dd12396/data)
+of `data` folder. 
 
 ## Build your new game
 
-1. Make necessary changes to [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder based on information provided in [Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki)
-2. Run [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html) file in your browser to test, if everything works fine
+1. Make necessary changes to `data` folder based on information provided in [Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki)
+2. Run `index.html` file in your browser to test, if everything works fine
 
 ## Commit changes to your game
 
@@ -89,11 +94,12 @@ much the same as described above.
 
 ## Firefox
 
-This code (games engine) is checked on regular occasions and should work in every modern web browser... except for Firefox.
+The code (_game engine_) is checked on regular basis and should work in every modern web browser... except for Firefox.
 
 Turns out that Firefox is [a mentally retarded web browser](https://onezeronull.com/2023/11/03/localstorage-vs-firefox/).
-As explained in the linked article, [**it doesn't share values stored in _localStorage_ between files**](https://stackoverflow.com/q/78146699/1469208)!
+As explained in the linked article, **[it doesn't share values stored in _localStorage_ between files](https://stackoverflow.com/q/78146699/1469208)**!
 
 This means that you will go to [Settings page](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/settings.html),
 change theme, font or language, go back to [menu](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/menu.html)
-or [paragraph](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/paragraph.html) and... your settings won't be reflected (or actually... they will be reflected [until you close tab or browser](https://github.com/niner-games/tech-html-paragraph-game-engine/commit/8a1a8121a1ce67c6b048e0e97ab47cbb8e5aeadf#diff-b602b2240cbcb4e4de89f3446fd527f80e57a44d4f7bdb011023f9c109c798de).
+or [paragraph](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/paragraph.html) and... your settings
+won't be reflected (or actually... they will be reflected [until you close tab or browser](https://github.com/niner-games/tech-html-paragraph-game-engine/commit/8a1a8121a1ce67c6b048e0e97ab47cbb8e5aeadf#diff-b602b2240cbcb4e4de89f3446fd527f80e57a44d4f7bdb011023f9c109c798de).
