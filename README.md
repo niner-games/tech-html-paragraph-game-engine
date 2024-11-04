@@ -16,11 +16,10 @@ If you want to read about game configuration or creating new game process then y
 
 - [Repository Structure](#repository-structure)
 - [Creating a new game](#creating-a-new-game)
-    * [Create a GAME repository](#create-a-game-repository)
-    * [Clone ENGINE repository locally](#clone-engine-repository-locally)
-    * [Add GAME repository as local submodule](#add-game-repository-as-local-submodule)
+    * [Create new game repository](#create-new-game-repository)
+    * [Prepare local environment](#prepare-local-environment)
     * [Build your new game](#build-your-new-game)
-    * [Commit changes](#commit-changes-to-game-repository)
+    * [Commit changes to your game](#commit-changes-to-your-game)
 - [Playing existing game](#playing-existing-game)
     * [Firefox](#firefox)
 
@@ -33,63 +32,53 @@ Each paragraph game consists of:
 - Game views stored in [_root_](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main) folder
 
 The **core** element of each game is _a set of files_ stored in [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data)
-folder. In this repository (main, engine) you will find some files stored there, so the game should not crash, after you
-run it from [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html) file. But,
-please **keep in mind** that you you **MUST delete all these files** before you start working on a new game. See the instruction
-below for details.
+folder. But, this folder **is ignored** in this repository meaning that you must create it manually and put some files there
+(see below). Otherwise, the game **will crash** after you run it from [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html)
+file.
 
 # Creating a new game
 
-## Create a GAME repository
+## Create new game repository
 
-1. Create a new GitHub repository for storing app-specific settings, data and styles.
-2. Remember that new repository's URL.
-3. You don't have to clone it locally.
+1. Create a new GitHub repository for storing game-specific settings, data and styles, if it is not already exist
+2. Remember that new repository's URL
+3. Don't clone it locally yet!
 
-## Clone ENGINE repository locally
+## Prepare local environment
 
-1. Clone current repository locally:
-
-```bash
-git clone git@github.com:niner-games/tech-html-paragraph-game-engine.git
-```
-
-2. Run [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html) file in your browser to test, if everything works based on default game's configuration
-3. Copy contents of [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder outside repository, if you don't want to start from scratch
-4. **Empty [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder from all its content**!
-5. If the folder isn't empty, Git could get confused when managing submodule contents (see below)
-
-## Add GAME repository as local submodule
-
-1. Add GAME repository (previous point) as a _git submodule_ in the [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder:
+1. Clone **current repository** (_game engine_) locally:
 
 ```bash
-git submodule add git@github.com:niner-games/arizona-gold.git data
+git clone git@github.com:niner-games/tech-html-paragraph-game-engine.git game-name
 ```
 
-2. Update everything:
+2. Clone **external repository** (_game data_) locally to [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder:
 
 ```bash
-git pull && git submodule update --remote --merge
+cd game-name
+git clone git@github.com:niner-games/arizona-gold.git data
 ```
+
+3. If pulled _game data_ repository is empty, create fresh set of files in [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder (see in [Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki)) or manually copy example files from [this repository](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) and adjust them to your needs
+4. Run [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html) file in your browser to test, if everything works fine
 
 ## Build your new game
 
-Make necessary changes to [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder based on information provided in [Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki)
+1. Make necessary changes to [`data`](https://github.com/niner-games/tech-html-paragraph-game-engine/tree/main/data) folder based on information provided in [Wiki](https://github.com/niner-games/tech-html-paragraph-game-engine/wiki)
+2. Run [`index.html`](https://github.com/niner-games/tech-html-paragraph-game-engine/blob/main/index.html) file in your browser to test, if everything works fine
 
-## Commit changes to GAME repository
+## Commit changes to your game
 
-Commit and push changes to your game:
+Commit and push changes to _game data_:
 
 ```bash
+cd data
 git add --all
 git commit -m "Commit message"
-cd data && git push && cd ..
+git push
 ```
 
-Since game engine is shared among other games, **DO NOT MODIFY it along with some game**. Go back to current repository,
-make and test all changes here, commit and push changes here and pull them back over your local setups of your games using
-instruction provided above (`git pull && git submodule update --remote --merge`).
+Since game engine is shared among other games, **DO NOT MODIFY it along with some game**!
 
 # Playing existing game
 
