@@ -1,8 +1,8 @@
 const AutoLoader = {
     stylesheets: {
-        'main': 'css/style.css',
-        'images': 'css/fontawesome.css',
-        'theme': 'css/bootstrap-yeti.css'
+        'main': 'data/styles/style.css',
+        'images': 'data/styles/fontawesome.css',
+        'theme': 'data/styles/bootstrap-yeti.css'
     },
 
     scripts: [

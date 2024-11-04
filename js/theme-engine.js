@@ -25,7 +25,7 @@ const ThemeEngine = {
     },
 
     getPath(theme) {
-        return 'css/' + theme + '.css';
+        return 'data/styles/' + theme + '.css';
     },
 
     getTransformation() {
