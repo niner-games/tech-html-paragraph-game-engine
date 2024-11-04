@@ -50,6 +50,6 @@ const TranslationEngine = {
     setDefaultLanguage: function() {
         AutoLoader.defaultLanguage = navigator.language || navigator.languages[0];
 
-        this.setLanguage();
+        this.setLanguage(this.getLanguage());
     }
 };
