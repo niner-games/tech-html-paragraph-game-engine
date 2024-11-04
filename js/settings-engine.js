@@ -23,33 +23,106 @@ const SettingsEngine = {
     },
 
     generateButtons: function(sourceArray, colorsArray, eventListener, parentElement, storageKey) {
-    let i = 0;
-    let style = "ltr";
+        let i = 0;
+        let style = "ltr";
 
-    for (let key in sourceArray) {
-        if (sourceArray.hasOwnProperty(key)) {
-            let button = document.createElement("button");
+        for (let key in sourceArray) {
+            if (sourceArray.hasOwnProperty(key)) {
+                let button = document.createElement("button");
 
-            style = (key === "iw") ? "rtl" : style;
+                style = (key === "iw") ? "rtl" : style;
 
-            button.value = key;
-            button.type = 'button';
-            button.style.direction = style;
-            button.setAttribute('data-text', sourceArray[key]);
+                button.value = key;
+                button.type = 'button';
+                button.style.direction = style;
+                button.setAttribute('data-text', sourceArray[key]);
 
-            button.classList.add('btn');
-            button.classList.add(colorsArray[i % colorsArray.length]);
+                button.classList.add('btn');
+                button.classList.add(colorsArray[i % colorsArray.length]);
 
-            if (AutoLoader.getItem(storageKey) === key) {
-                button.classList.add('active');
+                if (AutoLoader.getItem(storageKey) === key) {
+                    button.classList.add('active');
+                }
+
+                button.addEventListener('click', (event) => eventListener(event, key));
+
+                parentElement.appendChild(button);
+
+                i++;
             }
+        }
 
-            button.addEventListener('click', (event) => eventListener(event, key));
+        return i;
+    },
 
-            parentElement.appendChild(button);
+    updateColumnVisibility: function(languagesCount = 0, themesCount = 0, transformationsCount = 0) {
+        const themesColumn = document.getElementById("theme-buttons");
+        const languageColumn = document.getElementById("language-buttons");
+        const transformationsColumn = document.getElementById("transformation-buttons");
 
-            i++;
+        if (languagesCount === 0 && themesCount === 0 && transformationsCount === 0) {
+            languageColumn.style.display = 'none';
+            themesColumn.style.display = 'none';
+            transformationsColumn.style.display = 'none';
+        } else if (languagesCount === 0 && themesCount === 0) {
+            languageColumn.style.display = 'none';
+            themesColumn.style.display = 'none';
+            transformationsColumn.style.display = 'block';
+
+            transformationsColumn.classList.remove('col-md-6', 'col-lg-4');
+            transformationsColumn.classList.add('col-md-12', 'col-lg-12');
+        } else if (languagesCount === 0 && transformationsCount === 0) {
+            languageColumn.style.display = 'none';
+            themesColumn.style.display = 'block';
+            transformationsColumn.style.display = 'none';
+
+            themesColumn.classList.remove('col-md-6', 'col-lg-4');
+            themesColumn.classList.add('col-md-12', 'col-lg-12');
+        } else if (themesCount === 0 && transformationsCount === 0) {
+            languageColumn.style.display = 'block';
+            themesColumn.style.display = 'none';
+            transformationsColumn.style.display = 'none';
+
+            languageColumn.classList.remove('col-md-6', 'col-lg-4');
+            languageColumn.classList.add('col-md-12', 'col-lg-12');
+        } else if (languagesCount === 0) {
+            languageColumn.style.display = 'none';
+            themesColumn.style.display = 'block';
+            transformationsColumn.style.display = 'block';
+
+            themesColumn.classList.remove('col-md-6', 'col-lg-4', 'col-lg-6');
+            themesColumn.classList.add('col-md-6', 'col-lg-6');
+            transformationsColumn.classList.remove('col-md-6', 'col-lg-4');
+            transformationsColumn.classList.add('col-md-6', 'col-lg-6');
+        } else if (themesCount === 0) {
+            languageColumn.style.display = 'block';
+            themesColumn.style.display = 'none';
+            transformationsColumn.style.display = 'block';
+
+            languageColumn.classList.remove('col-md-6', 'col-lg-4', 'col-lg-6');
+            languageColumn.classList.add('col-md-6', 'col-lg-6');
+            transformationsColumn.classList.remove('col-md-6', 'col-lg-4');
+            transformationsColumn.classList.add('col-md-6', 'col-lg-6');
+        } else if (transformationsCount === 0) {
+            languageColumn.style.display = 'block';
+            themesColumn.style.display = 'block';
+            transformationsColumn.style.display = 'none';
+
+            languageColumn.classList.remove('col-md-6', 'col-lg-4', 'col-lg-6');
+            languageColumn.classList.add('col-md-6', 'col-lg-6');
+            themesColumn.classList.remove('col-md-6', 'col-lg-4');
+            themesColumn.classList.add('col-md-6', 'col-lg-6');
+        } else {
+            languageColumn.style.display = 'block';
+            themesColumn.style.display = 'block';
+            transformationsColumn.style.display = 'block';
+
+            languageColumn.classList.remove('col-md-12', 'col-lg-12', 'col-lg-6');
+            languageColumn.classList.add('col-md-6', 'col-lg-4');
+            themesColumn.classList.remove('col-md-6', 'col-lg-6');
+            themesColumn.classList.add('col-md-6', 'col-lg-4');
+            transformationsColumn.classList.remove('col-md-6', 'col-lg-6');
+            transformationsColumn.classList.add('col-md-6', 'col-lg-4');
         }
     }
-}
 };

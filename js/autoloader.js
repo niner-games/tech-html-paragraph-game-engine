@@ -36,7 +36,7 @@ const AutoLoader = {
         'theme-dark': 'Negative'
     },
 
-    defaultLanguage: 'en',
+    defaultLanguage: 'pl',
     defaultParagraph: 'I',
     defaultTheme: 'bootstrap-yeti',
     defaultTransformation: 'theme-dark',
@@ -114,8 +114,17 @@ const AutoLoader = {
 
 window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
+        if (AutoLoader.getContext() === 'paragraph') {
+            ParagraphEngine.goToParagraph(ParagraphEngine.getCurrentParagraphIndex());
+        }
+
         if (AutoLoader.getContext() === 'settings') {
-            SettingsEngine.generateButtons(
+            let themesCount = 0;
+            let languagesCount = 0;
+            let transformationsCount = 0;
+
+
+            languagesCount = SettingsEngine.generateButtons(
                 AutoLoader.languages,
                 ['btn-success'],
                 (event, key) => TranslationEngine.setLanguage(key),
@@ -123,7 +132,7 @@ window.addEventListener("load", function() {
                 'language'
             );
 
-            SettingsEngine.generateButtons(
+            themesCount = SettingsEngine.generateButtons(
                 AutoLoader.themes,
                 ['btn-warning'],
                 (event, key) => ThemeEngine.setTheme(key),
@@ -131,17 +140,15 @@ window.addEventListener("load", function() {
                 'theme'
             );
 
-            SettingsEngine.generateButtons(
+            transformationsCount = SettingsEngine.generateButtons(
                 AutoLoader.transformations,
                 ['btn-info'],
                 (event, key) => ThemeEngine.setTransformation(key),
                 document.getElementById('transformation-overlay'),
                 'transformation'
             );
-        }
 
-        if (AutoLoader.getContext() === 'paragraph') {
-            ParagraphEngine.goToParagraph(ParagraphEngine.getCurrentParagraphIndex());
+            SettingsEngine.updateColumnVisibility(languagesCount, themesCount, transformationsCount);
         }
 
         if (AutoLoader.getContext() === 'menu') {
