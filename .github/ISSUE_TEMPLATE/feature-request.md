@@ -3,7 +3,7 @@ name: Feature request
 about: Some new functionality
 title: 
 labels: enhancement
-assignees: trejder
+assignees: mrfatguy
 
 ---
 
