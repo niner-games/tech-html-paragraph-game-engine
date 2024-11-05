@@ -37,7 +37,7 @@ const AutoLoader = {
     },
 
     defaultLanguage: 'en',
-    defaultParagraph: 'I',
+    defaultParagraph: 'i',
     defaultTheme: 'bootstrap-yeti',
     defaultTransformation: 'theme-dark',
 
@@ -145,7 +145,11 @@ window.addEventListener("load", function() {
         AutoLoader.updateDefaultValues();
 
         if (AutoLoader.getContext() === 'paragraph') {
-            ParagraphEngine.goToParagraph(ParagraphEngine.getCurrentParagraphIndex());
+            ParagraphEngine.loadExternalTexts().then(() => {
+                ParagraphEngine.goToParagraph(ParagraphEngine.getCurrentParagraphIndex());
+            }).catch(error => {
+                console.error(error);
+            });
         }
 
         if (AutoLoader.getContext() === 'settings') {

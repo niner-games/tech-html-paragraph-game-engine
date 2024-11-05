@@ -1,4 +1,37 @@
 const ParagraphEngine = {
+    loadExternalTexts: function() {
+        window.t = {};
+        const promises = [];
+
+        for (let paragraph of paragraphData.paragraphs) {
+            for (let lang in paragraph.description) {
+                const filePath = paragraph.description[lang];
+                if (filePath) {
+                    promises.push(new Promise((resolve, reject) => {
+                        const script = document.createElement('script');
+
+                        script.src = 'data/paragraphs/' + filePath + '.js?v=' + new Date().getTime();
+                        script.async = true;
+
+                        script.onload = () => {
+                            try {
+                                paragraph.description[lang] = window.t[filePath];
+                                resolve();
+                            } catch (error) {
+                                reject(`Failed to load text from ${filePath}`);
+                            }
+                        };
+
+                        script.onerror = () => reject(`Failed to load script: ${filePath}`);
+                        document.body.appendChild(script);
+                    }));
+                }
+            }
+        }
+
+        return Promise.all(promises);
+    },
+
     getCurrentParagraphIndex() {
         return AutoLoader.getItem('paragraph');
     },
@@ -7,11 +40,17 @@ const ParagraphEngine = {
         AutoLoader.setItem('paragraph', index);
     },
 
-    veryVerySimpleMarkdownfunction: function(input) {
-        return input
+    verySimpleMarkdownParser: function(input, skipNewLines = false) {
+        input = input
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/_(.*?)_/g, '<em>$1</em>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>');
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/_(.*?)_/g, '<em>$1</em>');
+
+            // input = (skipNewLines) ? input : input.split('\n').map(line => `<p>${line}</p>`).join('');
+            input = (skipNewLines) ? input : input.split('\n').filter(line => line.trim() !== '').map(line => `<p>${line}</p>`) .join('');
+            // input = (skipNewLines) ? input : input.replace(/\n/g, '<br />');
+
+        return input;
     },
 
     getTitle: function(paragraph, language) {
@@ -26,7 +65,7 @@ const ParagraphEngine = {
             title = paragraphObj.title[AutoLoader.defaultLanguage];
         }
 
-        return this.veryVerySimpleMarkdownfunction(title);
+        return this.verySimpleMarkdownParser(title, true);
     },
 
     getDescription: function(paragraph, language) {
@@ -45,7 +84,7 @@ const ParagraphEngine = {
             description = "No **NOT** found!";
         }
 
-        return this.veryVerySimpleMarkdownfunction(description);
+        return this.verySimpleMarkdownParser(description);
     },
 
     getConnectors: function(paragraph, language) {
@@ -191,7 +230,7 @@ const ParagraphEngine = {
             }
         });
 
-        document.getElementById('paragraph-number').textContent = paragraph;
+        document.getElementById('paragraph-number').textContent = paragraph.toUpperCase();
         document.getElementById('paragraph-title').innerHTML = this.getTitle(paragraph, language);
         document.getElementById('paragraph-description').innerHTML = this.getDescription(paragraph, language);
 

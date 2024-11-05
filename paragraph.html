@@ -49,6 +49,14 @@
             font-weight: bold;
         }
 
+        #paragraph-description {
+            line-height: 1.1;
+        }
+
+        #paragraph-description > p {
+            margin-bottom: 1.0%;
+        }
+
         @media (min-width: 992px) {
             html, body {
                 overflow: hidden; /* Prevents entire page scrolling for large screens */
@@ -74,20 +82,24 @@
 
         @media (max-width: 991px) {
             .left-column, .right-column {
-                height: auto; /* Allows columns to adjust based on content */
+                height: auto;
             }
 
             .text-block {
-                max-height: none; /* Allows full height for small screens */
-                overflow-y: visible; /* Ensures no scrollbar in text block */
+                max-height: none;
+                overflow-y: visible;
             }
 
             img.img-fluid {
-                height: auto; /* Allows image to adjust based on its natural height */
+                height: auto;
             }
 
             .text-block p {
-                font-size: 1.2rem; /* Larger font size for small screens */
+                font-size: 1.2rem;
+            }
+
+            #paragraph-description > p {
+                margin-bottom: 2.1%;
             }
         }
     </style>
