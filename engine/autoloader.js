@@ -50,7 +50,7 @@ const AutoLoader = {
 
             link.id = key;
             link.rel = 'stylesheet';
-            link.href = this.stylesheets[key];
+            link.href = this.stylesheets[key] + '?v=' + new Date().getTime();
 
             document.head.appendChild(link);
 
