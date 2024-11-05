@@ -71,6 +71,7 @@
                 setTimeout(() => {
                     if (currentIndex < items.length) {
                         items[currentIndex].classList.add('visible');
+                        
                         setTimeout(() => {
                             items[currentIndex].classList.remove('visible');
                             currentIndex++;
@@ -82,18 +83,18 @@
                 }, 1000);
             }
 
-            function gotoMenu() {
+            function goToMenu() {
                 window.location.href = 'menu.html';
             }
 
             setTimeout(showNextItem, 1000);
 
             document.getElementById('background').addEventListener('click', function() {
-                gotoMenu();
+                goToMenu();
             });
 
             document.addEventListener('keydown', function() {
-                gotoMenu();
+                goToMenu();
             });
         });
     </script>
