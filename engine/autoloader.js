@@ -62,7 +62,8 @@ const AutoLoader = {
         this.scripts.forEach(function (scriptSrc) {
             const script = document.createElement('script');
 
-            script.src = scriptSrc;
+            script.src = scriptSrc + '?v=' + new Date().getTime();
+            script.async = true;
 
             document.body.appendChild(script);
 
@@ -135,8 +136,6 @@ const AutoLoader = {
                     this[attribute] = value;
                 }
             }
-
-            console.log(attribute + ' = "' + JSON.stringify(this[attribute]) + '"');
         });
     }
 };

@@ -3,10 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
     <title data-text="Settings"></title>
 
-    <script src="engine/autoloader.js"></script>
+    <script>
+        const script = document.createElement('script');
+        script.src = "engine/autoloader.js" + '?v=' + new Date().getTime();
+        script.async = true;
+        document.head.appendChild(script);
+    </script>
 </head>
 <body>
 
