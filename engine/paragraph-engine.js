@@ -184,13 +184,14 @@ const ParagraphEngine = {
     generateButtons: function(buttons) {
         let buttonGroup = document.getElementById('paragraph-buttons');
         const classes = ['w-25', 'w-50', 'w-75', 'w-100'];
+        const newClass = `w-${buttons.length * 25}`;
 
         buttonGroup.innerHTML = '';
 
         buttons.forEach((button) => {
             let btn = document.createElement('button');
             btn.type = 'button';
-            btn.className = 'btn btn-success button-25 me-2'; // Adjust class if needed
+            btn.className = 'btn btn-success button-25 me-2';
             btn.classList.add(`w-${100 / buttons.length}`);
             btn.innerText = button.label;
             btn.onclick = () => {
@@ -205,8 +206,31 @@ const ParagraphEngine = {
         }
 
         buttonGroup.classList.remove(...classes);
-        const newClass = `w-${buttons.length * 25}`;
         buttonGroup.classList.add(newClass);
+
+        if (AutoLoader.debugMode) {
+            const buttonGroup = document.getElementById('control-buttons');
+            const newButton = document.createElement('button');
+
+            newButton.id = 'debug-button';
+            newButton.type = 'button';
+            newButton.className = 'btn btn-danger me-2';
+            newButton.innerHTML = 'Jump';
+
+            buttonGroup.appendChild(newButton);
+            buttonGroup.classList.add('w-75');
+            buttonGroup.classList.remove('w-50');
+
+            newButton.addEventListener('click', function() {
+                const userValue = prompt('Where do you want to go today?');
+                if (userValue !== null && userValue !== "" && userValue !== undefined && !isNaN(userValue)) {
+                    const numericValue = Number(userValue);
+
+                    ParagraphEngine.setCurrentParagraphIndex(numericValue);
+                    window.location.href = 'paragraph.html';
+                }
+            });
+        }
     },
 
     goToParagraph: function(paragraph) {
