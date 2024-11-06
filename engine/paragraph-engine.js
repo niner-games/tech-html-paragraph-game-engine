@@ -86,9 +86,7 @@ const ParagraphEngine = {
             } else if (defaultDescription !== '') {
                 description = defaultDescription;
             } else {
-                console.log('Description not available for paragraph no "' + paragraph + '" and language "' + language + '".');
-
-                description = "No **NOT** found!";
+                description = 'Description not available for paragraph no "' + paragraph + '" and language "' + language + '".';
             }
         }
 
@@ -120,8 +118,6 @@ const ParagraphEngine = {
                 }
             });
         } else {
-            console.log("No connectors for paragraph no: " + paragraph + " and language: " + language);
-
             return null;
         }
     },
@@ -140,7 +136,6 @@ const ParagraphEngine = {
                 return paragraphObj.image[AutoLoader.defaultLanguage];
             }
         }
-        console.log('Image not available for paragraph no "' + paragraph + '" and language "' + language + '".');
 
         return "";
     },
@@ -148,16 +143,28 @@ const ParagraphEngine = {
     loadImage: function(paragraph, language, imgElementId, callback) {
         language = TranslationEngine.validateLanguage(language);
 
-        const imagePath = 'data/images/' + this.getImage(paragraph, language);
         const img = document.getElementById(imgElementId);
+        let imagePath = 'data/images/' + this.getImage(paragraph, language);
 
         if (img) {
             img.onload = function() {
                 callback(true, imagePath);
             };
+
             img.onerror = function() {
-                callback(false, imagePath);
+                imagePath = 'data/images/' + ParagraphEngine.getImage(paragraph, AutoLoader.defaultLanguage);
+
+                img.onload = function() {
+                    callback(true, imagePath);
+                };
+
+                img.onerror = function() {
+                    callback(false, imagePath);
+                };
+
+                img.src = imagePath;
             };
+
             img.src = imagePath;
         } else {
             callback(false, 'Image element not found');
@@ -250,12 +257,8 @@ const ParagraphEngine = {
         paragraph = this.validateParagraph(paragraph);
         language = TranslationEngine.validateLanguage(language);
 
-        this.loadImage(paragraph, language, 'paragraph-image', function(exists, imagePath) {
+        this.loadImage(paragraph, language, 'paragraph-image', function(exists) {
             ParagraphEngine.toggleColumns(exists);
-
-            if (!exists) {
-                console.log("Image not found or element not found:", imagePath);
-            }
         });
 
         document.getElementById('paragraph-number').textContent = paragraph.toUpperCase();
