@@ -108,7 +108,7 @@ const ParagraphEngine = {
                     console.log('Label not available for paragraph no "' + paragraph + '" and language "' + language + '".');
 
                     return {
-                        label: "!!!",
+                        label: TranslationEngine.translateText('Go to', language) + ' ' + connector.destination,
                         destination: connector.destination
                     };
                 }
@@ -193,7 +193,7 @@ const ParagraphEngine = {
             btn.type = 'button';
             btn.className = 'btn btn-success button-25 me-2';
             btn.classList.add(`w-${100 / buttons.length}`);
-            btn.innerText = button.label;
+            btn.innerHTML = button.label;
             btn.onclick = () => {
                 ParagraphEngine.goToParagraph(button.destination);
             };
@@ -244,8 +244,6 @@ const ParagraphEngine = {
         paragraph = this.validateParagraph(paragraph);
         language = TranslationEngine.validateLanguage(language);
 
-        let buttons = this.getConnectors(paragraph, language);
-
         this.loadImage(paragraph, language, 'paragraph-image', function(exists, imagePath) {
             ParagraphEngine.toggleColumns(exists);
 
@@ -258,6 +256,6 @@ const ParagraphEngine = {
         document.getElementById('paragraph-title').innerHTML = this.getTitle(paragraph, language);
         document.getElementById('paragraph-description').innerHTML = this.getDescription(paragraph, language);
 
-        this.generateButtons(buttons);
+        this.generateButtons(this.getConnectors(paragraph, language));
     }
 };
