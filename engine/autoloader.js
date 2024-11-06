@@ -145,15 +145,16 @@ const AutoLoader = {
 
 window.addEventListener("load", function() {
     AutoLoader.loadResources().then(() => {
-        AutoLoader.updateDefaultValues();
-
         if (AutoLoader.getContext() === 'paragraph') {
             ParagraphEngine.loadExternalTexts().then(() => {
+                AutoLoader.updateDefaultValues();
                 ParagraphEngine.goToParagraph(ParagraphEngine.getCurrentParagraphIndex());
             }).catch(error => {
                 console.error(error);
             });
         }
+
+        AutoLoader.updateDefaultValues();
 
         if (AutoLoader.getContext() === 'settings') {
             let themesCount;

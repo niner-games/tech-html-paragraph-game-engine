@@ -70,18 +70,26 @@ const ParagraphEngine = {
 
     getDescription: function(paragraph, language) {
         let description;
+        const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
 
         language = TranslationEngine.validateLanguage(language);
 
-        const paragraphObj = paragraphData.paragraphs.find(para => para.id === paragraph.toString());
-        if (paragraphObj && paragraphObj.description[language]) {
-            description = paragraphObj.description[language];
-        } else if (paragraphObj && paragraphObj.description[AutoLoader.defaultLanguage]) {
-            description = paragraphObj.description[AutoLoader.defaultLanguage];
-        } else {
-            console.log('Description not available for paragraph no "' + paragraph + '" and language "' + language + '".');
+        if (paragraphObj) {
+            let currentDescription = (paragraphObj.description[language]) || '';
+            let defaultDescription = (paragraphObj.description[AutoLoader.defaultLanguage]) || '';
 
-            description = "No **NOT** found!";
+            currentDescription = currentDescription.replace(/^\s+|\s+$/g, '');
+            defaultDescription = defaultDescription.replace(/^\s+|\s+$/g, '');
+
+            if (currentDescription !== '') {
+                description = currentDescription;
+            } else if (defaultDescription !== '') {
+                description = defaultDescription;
+            } else {
+                console.log('Description not available for paragraph no "' + paragraph + '" and language "' + language + '".');
+
+                description = "No **NOT** found!";
+            }
         }
 
         return this.verySimpleMarkdownParser(description);
@@ -105,8 +113,6 @@ const ParagraphEngine = {
                         destination: connector.destination
                     };
                 } else {
-                    console.log('Label not available for paragraph no "' + paragraph + '" and language "' + language + '".');
-
                     return {
                         label: TranslationEngine.translateText('Go to', language) + ' ' + connector.destination,
                         destination: connector.destination
